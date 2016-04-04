@@ -5,13 +5,15 @@ package jeu;
 
 /**
  * @author Ricky Hoben
- *  Une class qui contient que des les coordonnées X et Y d'un tableau cartésien.
+ *  Une class qui contient les coordonnées X et Y d'un tableau cartésien.
  *  Ils ne contiennent que des nombres entier.
  */
 public class Coordonnee {
 	
-	private int x; // numéro de la colonne
-	private int y; // numéro de la ligne
+	private char x; // numéro de la colonne en lettre de A à J
+	private int y; // numéro de la ligne 1 à 10
+	private boolean touche; //indique si coordonné a été touché 
+
 
 
 	/**
@@ -19,7 +21,7 @@ public class Coordonnee {
 	 * x = numéro de la colonne
 	 * y = numéro de la ligne
 	 */
-	public Coordonnee(int x, int y) {
+	public Coordonnee(char x, int y) {
 		setX(x);
 		setY(y);		
 	}
@@ -29,7 +31,7 @@ public class Coordonnee {
 	}
 
 
-	public void setX(int x) {
+	public void setX(char x) {
 		this.x = x;
 	}
 
@@ -42,6 +44,21 @@ public class Coordonnee {
 	public void setY(int y) {
 		this.y = y;
 	}
+	
+	/**
+	 * @return the touche
+	 */
+	public boolean isTouche() {
+		return touche;
+	}
+
+	/**
+	 * @param touche the touche to set
+	 */
+	public void setTouche(boolean touche) {
+		this.touche = touche;
+	}
+
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
@@ -74,5 +91,12 @@ public class Coordonnee {
 		return true;
 	}
 
-
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Coordonnee [x=" + x + ", y=" + y + ", touche=" + touche + "]";
+	}
+	
 }
