@@ -10,18 +10,18 @@ package jeu;
  */
 public class Coordonnee {
 	
-	private char x; // numéro de la colonne en lettre de A à J
-	private int y; // numéro de la ligne 1 à 10
+	private int x; // numéro de la colonne de 0 à 9
+	private int y; // numéro de la ligne 0 à 9
 	private boolean touche; //indique si coordonné a été touché 
-
 
 
 	/**
 	 * Constructeur 
 	 * x = numéro de la colonne
 	 * y = numéro de la ligne
+	 * touche  false si non tout true si touche
 	 */
-	public Coordonnee(char x, int y) {
+	public Coordonnee(int x, int y) {
 		setX(x);
 		setY(y);		
 	}
@@ -31,7 +31,7 @@ public class Coordonnee {
 	}
 
 
-	public void setX(char x) {
+	public void setX(int x) {
 		this.x = x;
 	}
 
