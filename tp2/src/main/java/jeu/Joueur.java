@@ -16,8 +16,8 @@ public class Joueur {
 	private int totalPoints=0;
 	private final int NBR_NAVIRE=5;
 	private HashMap<NavireType,Navire> navires;
-	private Grille grilleSuperieur;
-	private Grille grilleInferieur;
+	private Grille grilleAdverse;
+	private Grille grillePrincipale;
 
 	/**
 	 * constructeur de la class joueur
@@ -28,13 +28,13 @@ public class Joueur {
 		
 		// création des bateaux
 		this.navires.put(NavireType.PORTEAVIONS, new PorteAvions());
-	/*	this.navires.put(NavireType.PORTEAVIONS, new PorteAvions());
-		this.navires.put(NavireType.PORTEAVIONS, new PorteAvions());
-		this.navires.put(NavireType.PORTEAVIONS, new PorteAvions());
-		this.navires.put(NavireType.PORTEAVIONS, new PorteAvions());*/
+		this.navires.put(NavireType.CROISSEUR, new Croisseur());
+		this.navires.put(NavireType.CONTRETORPILLEUR, new ContreTorpilleur());
+		this.navires.put(NavireType.SOUSMARIN, new SousMarin());
+		this.navires.put(NavireType.TORPILLEUR, new Torpilleur());
 		
-		grilleSuperieur = new Grille();
-		grilleInferieur = new Grille();				
+		grilleAdverse = new Grille();
+		grillePrincipale = new Grille();				
 		
 	}
 	
@@ -69,43 +69,44 @@ public class Joueur {
 	/**
 	 * @return the navires
 	 */
-	public HashMap<NavireType, Navire> getNavires() {
-		return navires;
+	public Navire getNavire(NavireType nomNavire) {
+		return navires.get(nomNavire);
 	}
 
 	/**
 	 * @param navires the navires to set
 	 */
-	public void setNavires(HashMap<NavireType, Navire> navires) {
-		this.navires = navires;
+	public void setNavires(Navire navires) {
+		
+		this.navires.replace(navires.getNom(), navires);
 	}
 
 	/**
-	 * @return the grilleSuperieur
+	 * @return the grilleAdverse
 	 */
-	public Grille getGrilleSuperieur() {
-		return grilleSuperieur;
+	public Grille getgrilleAdverse() {
+		return grilleAdverse;
 	}
 
 	/**
-	 * @param grilleSuperieur the grilleSuperieur to set
+	 * @param grilleAdverse the grilleAdverse to set
 	 */
-	public void setGrilleSuperieur(Grille grilleSuperieur) {
-		this.grilleSuperieur = grilleSuperieur;
+	public void setgrilleAdverse(Grille grilleAdverse) {
+		this.grilleAdverse = grilleAdverse;
 	}
 
 	/**
-	 * @return the grilleInferieur
+	 * @return the grillePrincipale
 	 */
-	public Grille getGrilleInferieur() {
-		return grilleInferieur;
+	public Grille getgrillePrincipale() {
+		return grillePrincipale;
 	}
 
 	/**
-	 * @param grilleInferieur the grilleInferieur to set
+	 * @param grillePrincipale the grillePrincipale to set
 	 */
-	public void setGrilleInferieur(Grille grilleInferieur) {
-		this.grilleInferieur = grilleInferieur;
+	public void setgrillePrincipale(Grille grillePrincipale) {
+		this.grillePrincipale = grillePrincipale;
 	}
 
 	/**
@@ -121,7 +122,7 @@ public class Joueur {
 	@Override
 	public String toString() {
 		return "Joueur [nom=" + nom + ", totalPoints=" + totalPoints + ", NBR_NAVIRE=" + NBR_NAVIRE + ", navires="
-				+ navires + ", grilleSuperieur=" + grilleSuperieur + ", grilleInferieur=" + grilleInferieur + "]";
+				+ navires + ", grilleAdverse=" + grilleAdverse + ", grillePrincipale=" + grillePrincipale + "]";
 	}
 
 	

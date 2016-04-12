@@ -1,28 +1,43 @@
-package jeu;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+/**
+ * 
+ */
+package AI;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-//import java.util.ArrayList;
-import AI.JoueurAI();
+import jeu.Grille;
+import jeu.NavireType;
 
-public class test {
+import jeu.Joueur;
 
-	
+/**
+ * @author DELL
+ *
+ */
+class JoueurAI extends Joueur {
+	/* niveau difficulté 
+	* 0 - facile
+	* 1 - difficile
+	*/ 
+	int niveau;
 
-	public static void main(String[] args) {
+	/**
+	 * 
+	 */
+	public JoueurAI() {		
+		super("JoueurAI");
+		this.niveau=0;
+        
+	}
+
+	/* places les navires du joueur AI */
+	public void autoPlacerNavire(int tailleNavire, NavireType nomNavire ) {
 		
-		
-		JoueurAI joueurAI = new JoueurAI();  
-		
-		int randLigne=0,randCol=0,randOrient=0,compteur=0,tempCol=0,tempLigne=0,tailleNavire=0;
-		Grille grille = new Grille();
-		PorteAvions porteAvion = new PorteAvions();
+		int randLigne=0,randCol=0,randOrient=0,compteur=0,tempCol=0,tempLigne=0;
+		Grille grille = this.getgrillePrincipale();
 		boolean returnVal=false;
 		final int MaxLigne = 10;
-		tailleNavire=porteAvion.getTaille();
+	
 
 		grille.afficheGrille();		
 	    do {
@@ -75,7 +90,7 @@ public class test {
 	    	tempLigne=randLigne;
 		    while(  compteur != tailleNavire ) {					
 
-				grille.setNomNavire(tempLigne,randCol, NavireType.PORTEAVIONS);
+				grille.setNomNavire(tempLigne,randCol, nomNavire);
 				grille.setCaseStatut(tempLigne, randCol, 1);
 				++compteur;
 				++tempLigne;
@@ -85,7 +100,7 @@ public class test {
 	    	tempCol=randCol;
 		    while(  compteur != tailleNavire ) {					
 				System.out.println("randLigne="+randLigne+" tempCol="+tempCol+" randCol="+randCol);
-				grille.setNomNavire(randLigne,tempCol, NavireType.PORTEAVIONS);
+				grille.setNomNavire(randLigne,tempCol, nomNavire);
 				grille.setCaseStatut(randLigne,tempCol, 1);
 				++compteur;
 				++tempCol;
@@ -94,15 +109,17 @@ public class test {
 	    }
 	    
         grille.afficheGrille();
-        
-      //  grille.setCaseStatut(0, 9, 2);
-        
-      //  grille.setNomNavire(0, 9, NavireType.PORTEAVIONS);
-     //   System.out.println(grille.getNomNavire(0, 9));
- 
-        
 
-			
-    }
-
+	}
+	
+	public void Random(){
+		// to do develop
+	}
+	
+	public void MinMax(){
+		// 	to do develop
+		
+	}
+	
+	
 }
