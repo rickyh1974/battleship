@@ -5,7 +5,10 @@ package jeu;
 
 import java.util.LinkedList;
 
-import IOXML.sauvegarde;
+import IOXML.Chargement;
+import IOXML.Sauvegarde;
+
+
 
 
 
@@ -19,13 +22,19 @@ import IOXML.sauvegarde;
  */
 public class Partie {
 	
-	LinkedList<Action> listFIFOAction = new LinkedList<Action>(); 
-
+	private LinkedList<Action> listFIFOAction = new LinkedList<Action>(); 
+    private EtatPartieType etatPartie;
+    private NiveauPartieType niveau;
+    private Joueur joueurAI;
+    private Joueur joueurH;
 	/**
 	 * 
 	 */
-	public Partie() {
-     
+	public Partie(String nomJoueur, NiveauPartieType niveau) {
+     joueurAI = new Joueur("JoueurAI");
+     joueurH = new Joueur(nomJoueur);
+     etatPartie = EtatPartieType.Encours;
+     this.niveau = niveau;
      
 		
 		// TODO Auto-generated constructor stub
@@ -53,10 +62,11 @@ public class Partie {
 
 	}
 	public boolean sauvegardePartie(String partieXML,String path, String nomFichier) {
-		return IOXML.SauvegardeXML(partieXML,path,nomFichier);// sauvegarde(partieXML,path,nomFichier);
+		return Sauvegarde.sauvegardeXML(partieXML, path, nomFichier);
 	}
 	public boolean chargement(String partieXML, String path, String nomFichier) {
-		return true;
+		
+		return Chargement.chargementXML(partieXML, path, nomFichier);
 	}
 	
 

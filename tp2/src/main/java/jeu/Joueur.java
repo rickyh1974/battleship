@@ -37,7 +37,7 @@ public class Joueur {
 		grilleInferieur = new Grille();				
 		
 	}
-
+	
 	/**
 	 * @return the nom
 	 */

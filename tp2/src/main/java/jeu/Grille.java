@@ -52,37 +52,37 @@ public class Grille {
 	/**
 	 * setCaseStatut
 	 * parametres: 
-	 * x qui peut être un chiffre de 1 à 9
-	 * y qui peut être un chiffre de 1 à 9
+	 * ligne qui peut être un chiffre de 1 à 9
+	 * col   qui peut être un chiffre de 1 à 9
 	 * statut qui peut être 
 	 * 0 valeur par défaut voulant case vide et non touché
 	 * 1 coordonnée déjà donnée par joueur
 	 * 2 coordonnée touché  
 	 */
-	public void setCaseStatut(int x, int y, int statut ){
+	public void setCaseStatut(int ligne, int col, int statut ){
 		
-		this.cases.get(x).get(y).setStatutCase(statut);
+		this.cases.get(ligne).get(col).setStatutCase(statut);
 			 	
 	}
 	
 	/**
 	 * getCaseStatut
 	 * parameters : 
-	 * x qui peut être un chiffre de 1 à 9
-	 * y qui peut être un chiffre de 1 à 9
+	 * ligne qui peut être un chiffre de 1 à 9
+	 * col qui peut être un chiffre de 1 à 9
 	 */
-	public int getCaseStatut(int x, int y ) {
+	public int getCaseStatut(int ligne, int col ) {
 		
-		return this.cases.get(x).get(y).getStatutCase();
+		return this.cases.get(ligne).get(col).getStatutCase();
 	 	
 	}
 	
-	public NavireType getNomNavire(int x, int y) {
-		return this.cases.get(x).get(y).getNomNavire();
+	public NavireType getNomNavire(int ligne, int col) {
+		return this.cases.get(ligne).get(col).getNomNavire();
 	}
 	
-	public void setNomNavire(int x, int y, NavireType nomNavire) {
-		this.cases.get(x).get(y).setNomNavire(nomNavire);
+	public void setNomNavire(int ligne, int col, NavireType nomNavire) {
+		this.cases.get(ligne).get(col).setNomNavire(nomNavire);
 	}
 	
 	public void afficheGrille(){

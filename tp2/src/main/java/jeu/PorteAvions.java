@@ -14,7 +14,8 @@ public class PorteAvions extends Navire {
 	/**
 	 * 
 	 */
-	public PorteAvions() {		
+	public PorteAvions() {	
+		this.orientation=0; // vertical par défaut
 		this.nom=NavireType.PORTEAVIONS;
 		this.nbPoints=0;
 		this.taille=5;
@@ -22,7 +23,7 @@ public class PorteAvions extends Navire {
 	}
 	
 	/**
-	 * @return the orientation
+	 * @
 	 */
 	public boolean estCoule() {
 		return false;
@@ -31,13 +32,13 @@ public class PorteAvions extends Navire {
 	/**
 	 * @return the orientation
 	 */
-	public OrientationType getOrientation() {
+	public int getOrientation() {
 	    return this.orientation;	
 	}
 	/**
 	 * @param orientation the orientation to set
 	 */
-	public void setOrientation(OrientationType orientation) {
+	public void setOrientation(int orientation) {
 		this.orientation = orientation;
 	}
 	/**

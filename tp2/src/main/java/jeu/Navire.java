@@ -10,8 +10,8 @@ import java.util.ArrayList;
  *
  */
 public abstract class Navire {
-	
-	protected OrientationType orientation;
+	// orientation 0 - VERTICAL 1 - HORIZONTAL
+	protected int orientation;
 	protected NavireType nom;
 	protected int nbPoints;
 	protected int taille;
@@ -26,12 +26,12 @@ public abstract class Navire {
 	/**
 	 * @return the orientation
 	 */
-	public abstract OrientationType getOrientation();
+	public abstract int getOrientation();
 	
 	/**
 	 * @param orientation the orientation to set
 	 */
-	public abstract void setOrientation(OrientationType orientation);
+	public abstract void setOrientation(int orientation);
 	/**
 	 * @return the nom
 	 */
