@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox id="VBox" alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.PartieControlleur">
+   <children>
+      <Label fx:id="lblMessage" prefHeight="100" text="Veillez placer vos navires et ensuite appuyer sur le bouton Commencer" />
+      <HBox alignment="CENTER" prefHeight="400.0" prefWidth="300.0">
+         <children>
+            <Pane id="grilleGauche" fx:id="grilleGauche" disable="false"  >
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                </padding>
+            </Pane>
+            <Pane id="grilleDroite" fx:id="grilleDroite" disable="true" />
+         </children>
+      </HBox>
+      <VBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="btnCommencer" mnemonicParsing="false" onAction="#handleBtnCommencer" text="Commencer" />
+            <Label fx:id="lblEnCours" text="Partie en cours..." textAlignment="CENTER" textFill="#807d7d" visible="false" />
+         </children>
+      </VBox>
+   </children>
+</VBox>

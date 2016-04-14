@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.MainAppController">
+   <left>
+      <SplitPane BorderPane.alignment="CENTER">
+        <VBox id="menu" prefHeight="200.0" prefWidth="250.0" spacing="25.0">
+         <children>
+            <Button id="btnNouvellePartie" mnemonicParsing="false" onAction="#handleBtnNouvellePartie" text="Nouvelle Partie" />
+            <Button id="btnRecommencerPartie" mnemonicParsing="false" onAction="#handleBtnRecommencerPartie" text="Recommencer Partie" />
+            <Button id="btnCharger" mnemonicParsing="false" onAction="#handleBtnCharger" text="Charger" />
+            <Button id="btnSauvegarder" mnemonicParsing="false" onAction="#handleBtnSauvegarder" text="Sauvegarder" />
+            <Button id="btnVisualiser" mnemonicParsing="false" onAction="#handleBtnVisualiser" text="Visualiser" />
+            <Button id="btnQuitter" mnemonicParsing="false" onAction="#handleBtnQuitter" text="Quitter" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="30.0" left="30.0" right="30.0" top="20.0" />
+         </padding>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+        </VBox>
+      </SplitPane>
+   </left>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+          <children>
+            <fx:include source="NouvellePartie.fxml" fx:id="ecranCentre" />
+          </children>
+      </Pane>
+   </center>
+</BorderPane>

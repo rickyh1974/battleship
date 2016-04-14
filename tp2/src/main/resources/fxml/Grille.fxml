@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import Interface.Tuile?>
+
+<GridPane fx:id="grille" gridLinesVisible="true" style="-fx-background-color: darkgrey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.GrilleControlleur">
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+   </rowConstraints>
+   <columnConstraints>
+      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+      <ColumnConstraints minWidth="10.0" prefWidth="30.0" />
+   </columnConstraints>
+   
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: steelblue" text="A" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: steelblue" text="B" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: steelblue" text="C" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: steelblue" text="D" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: steelblue" text="E" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: steelblue" text="F" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: steelblue" text="G" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: steelblue" text="H" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: steelblue" text="I" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="9" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: steelblue" text="J" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="10" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: steelblue" text="1" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: steelblue" text="2" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: steelblue" text="3" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: steelblue" text="4" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: steelblue" text="5" textAlignment="CENTER" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: steelblue" text="6" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: steelblue" text="7" textAlignment="CENTER" GridPane.columnIndex="7" GridPane.rowIndex="0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: steelblue" text="8" textAlignment="CENTER" GridPane.columnIndex="8" GridPane.rowIndex="0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: steelblue" text="9" textAlignment="CENTER" GridPane.columnIndex="9" GridPane.rowIndex="0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: steelblue" text="10" textAlignment="CENTER" GridPane.columnIndex="10" GridPane.rowIndex="0" />
+      
+      
+   </children>
+</GridPane>
