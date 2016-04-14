@@ -7,14 +7,7 @@ import java.util.LinkedList;
 
 import IOXML.Chargement;
 import IOXML.Sauvegarde;
-
-
-
-
-
-
-
-
+import AI.JoueurAI;
 
 /**
  * @author DELL
@@ -25,17 +18,16 @@ public class Partie {
 	private LinkedList<Action> listFIFOAction = new LinkedList<Action>(); 
     private EtatPartieType etatPartie;
     private NiveauPartieType niveau;
-    private Joueur joueurAI;
+    private JoueurAI joueurAI;
     private Joueur joueurH;
 	/**
 	 * 
 	 */
 	public Partie(String nomJoueur, NiveauPartieType niveau) {
-     joueurAI = new Joueur("JoueurAI");
+     joueurAI = new JoueurAI();
      joueurH = new Joueur(nomJoueur);
      etatPartie = EtatPartieType.Encours;
-     this.niveau = niveau;
-     
+     this.niveau = niveau;  
 		
 		// TODO Auto-generated constructor stub
 	}
@@ -46,10 +38,12 @@ public class Partie {
 	
 	public void placerNavire(){
 		// TODO Auto-generated constructor stub
+		joueurAI.autoPlacerNavire();
 
 	}
 	public void commencerPartie() {
 		// TODO Auto-generated constructor stub
+		
 
 	}
 	
@@ -57,7 +51,11 @@ public class Partie {
 		// TODO Auto-generated constructor stub
 
 	}
-	public void executerTour() {
+	public void executerTour(Joueur joueur) {
+		
+		
+		
+		
 		// TODO Auto-generated constructor stub
 
 	}

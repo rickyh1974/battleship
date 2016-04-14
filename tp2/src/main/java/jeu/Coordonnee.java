@@ -5,44 +5,56 @@ package jeu;
 
 /**
  * @author Ricky Hoben
- *  Une class qui contient les coordonnées X et Y d'un tableau cartésien.
+ *  Une class qui contient les coordonnées Col et ligne d'un tableau cartésien.
  *  Ils ne contiennent que des nombres entier.
  */
 public class Coordonnee {
 	
-	private int x; // numéro de la colonne de 0 à 9
-	private int y; // numéro de la ligne 0 à 9
-	private boolean touche; //indique si coordonné a été touché 
-
-
+	private int col; // numéro de la colonne de 0 à 9
+	private int ligne; // numéro de la ligne 0 à 9
+	private boolean touche; //indique si coordonné a été touché
+	
+	/**
+	 * Default Constructeur 
+	 * col = initialized to 0
+	 * ligne = initialized to 0 
+	 * touche initialisé à zero
+	 */
+	public Coordonnee() {
+		setCol(0);
+		setLigne(0);
+		setTouche(false);
+	}
+		
 	/**
 	 * Constructeur 
-	 * x = numéro de la colonne
-	 * y = numéro de la ligne
+	 * col = numéro de la colonne
+	 * ligne = numéro de la ligne
 	 * touche  false si non tout true si touche
 	 */
-	public Coordonnee(int x, int y) {
-		setX(x);
-		setY(y);		
+	public Coordonnee(int col, int ligne) {
+		setCol(col);
+		setLigne(ligne);
+		setTouche(false);
 	}
 
-	public int getX() {
-		return x;
-	}
-
-
-	public void setX(int x) {
-		this.x = x;
+	public int getCol() {
+		return col;
 	}
 
 
-	public int getY() {
-		return y;
+	public void setCol(int col) {
+		this.col = col;
 	}
 
 
-	public void setY(int y) {
-		this.y = y;
+	public int getLigne() {
+		return ligne;
+	}
+
+
+	public void setLigne(int ligne) {
+		this.ligne = ligne;
 	}
 	
 	/**
@@ -67,8 +79,8 @@ public class Coordonnee {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + x;
-		result = prime * result + y;
+		result = prime * result + col;
+		result = prime * result + ligne;
 		return result;
 	}
 
@@ -84,9 +96,9 @@ public class Coordonnee {
 		if (getClass() != obj.getClass())
 			return false;
 		Coordonnee other = (Coordonnee) obj;
-		if (x != other.x)
+		if (col != other.col)
 			return false;
-		if (y != other.y)
+		if (ligne != other.ligne)
 			return false;
 		return true;
 	}
@@ -96,7 +108,7 @@ public class Coordonnee {
 	 */
 	@Override
 	public String toString() {
-		return "Coordonnee [x=" + x + ", y=" + y + ", touche=" + touche + "]";
+		return "Coordonnee [col=" + col + ", ligne=" + ligne + ", touche=" + touche + "]";
 	}
 	
 }

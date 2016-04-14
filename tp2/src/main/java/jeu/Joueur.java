@@ -115,7 +115,8 @@ public class Joueur {
 	public int getNBR_NAVIRE() {
 		return NBR_NAVIRE;
 	}
-
+	
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
