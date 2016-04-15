@@ -16,7 +16,7 @@ public class ContreTorpilleur extends Navire {
 	public ContreTorpilleur() {	
 		this.orientation=0; // vertical par défaut
 		this.nom=NavireType.CONTRETORPILLEUR;
-		this.nbPoints=0;
+		this.nbPoints=3;
 		this.taille=3;
 
 	}
@@ -25,7 +25,7 @@ public class ContreTorpilleur extends Navire {
 	 * @
 	 */
 	public boolean estCoule() {
-		return false;
+		return this.getNbPoints()==0;
 	}
 	
 	/**
@@ -63,6 +63,12 @@ public class ContreTorpilleur extends Navire {
 	 */
 	public void setNbPoints(int nbPoints) {
 		this.nbPoints = nbPoints;
+	}
+	/**
+	 * Retirer 1 a la variable nbPoints
+	 */
+	public void retirerUnNbPoints() {
+		 --nbPoints;
 	}
 	/**
 	 * @return the taille

@@ -42,6 +42,14 @@ public class Partie {
 		joueurAI.autoPlacerNavire();
 
 	}
+	
+	public void reCommencerPartie() {
+		initialiser();
+		commencerPartie();
+		// TODO Auto-generated constructor stub
+		
+
+	}
 	public void commencerPartie() {
 		// TODO Auto-generated constructor stub
 		
@@ -64,10 +72,10 @@ public class Partie {
 		joueurH.getgrilleAdverse().afficheGrille();
 	}
 	
-	public Coordonnee executerTour() {
-		Coordonnee temp=new Coordonnee();
+	public Coordonnee executerTour(Coordonnee temp) {
+		
 		Action action=new Action();
-		Scanner keyboard = new Scanner(System.in);//testing purposes only
+		
 		
 		if (getEtatPartie()==EtatPartieType.tourJoueurAI){
 			action.setNomJoeur(joueurAI.getNom());
@@ -80,19 +88,24 @@ public class Partie {
 			afficheTouteLesGrilles();
 			
 		} else if (this.getEtatPartie()==EtatPartieType.tourJoueurH) {
-			action.setNomJoeur(joueurH.getNom());
-			System.out.println("enter a ligne number:");
-			temp.setLigne(keyboard.nextInt());
-			System.out.println("enter a col number:");
-			temp.setCol(keyboard.nextInt());
+			action.setNomJoeur(joueurH.getNom());			
 			temp.setTouche(joueurAI.verifierShot(temp));
+			if (temp.isTouche()) {
+				joueurAI.getgrillePrincipale().setCaseStatut(temp.getLigne(), temp.getCol(), 2);
+				joueurH.getgrilleAdverse().setCaseStatut(temp.getLigne(), temp.getCol(), 2);
+				joueurH.ajouteUnTotalPoints();
+				joueurAI.getNavire(joueurAI.getgrillePrincipale().getNomNavire(temp.getLigne(), temp.getCol())).retirerUnNbPoints();
+			} else {
+				joueurAI.getgrillePrincipale().setCaseStatut(temp.getLigne(), temp.getCol(), 3);
+				joueurH.getgrilleAdverse().setCaseStatut(temp.getLigne(), temp.getCol(), 3);
+			}
 			action.setPoint(temp);
 			listFIFOAction.add(action);
 			
 			afficheTouteLesGrilles();
 			
 		}
-		keyboard.close();
+		
 		return temp;
 		
 		// TODO Auto-generated constructor stub

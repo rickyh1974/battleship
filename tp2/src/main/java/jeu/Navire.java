@@ -48,6 +48,12 @@ public abstract class Navire {
 	 * @param nbPoints the nbPoints to set
 	 */
 	public abstract void setNbPoints(int nbPoints);
+	
+	/**
+	 * Retirer 1 a la variable nbPoints
+	 */
+	public abstract void retirerUnNbPoints();
+	
 	/**
 	 * @return the taille
 	 */

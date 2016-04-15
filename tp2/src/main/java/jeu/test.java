@@ -19,10 +19,25 @@ public class test {
 		//Joueur joueur = new Joueur("Ricky");
 		Partie partie = new Partie("ricky", NiveauPartieType.FACILE);
 		Coordonnee temp;
+		Coordonnee tempRecu=new Coordonnee();
 		//for ( NavireType navireTypeTemp : NavireType.values() ) {
 			partie.placerNavire();
-			temp=partie.executerTour();
-			System.out.println(temp.toString());
+			for( int j=0;j<10;++j){
+			
+				for( int i=0;i<10;++i) {
+					tempRecu.setLigne(j);
+					tempRecu.setCol(i);
+					tempRecu.toString();
+					temp=partie.executerTour(tempRecu);
+					System.out.println(tempRecu.toString());
+					System.out.println(temp.toString());
+				}
+
+			}
+			
+			
+			
+			
 			
 			
 			//joueurAI.autoPlacerNavire(joueurAI.getNavire(navireTypeTemp).getTaille(), joueurAI.getNavire(navireTypeTemp).getNom());

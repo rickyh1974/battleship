@@ -65,6 +65,13 @@ public class Joueur {
 	public void setTotalPoints(int totalPoints) {
 		this.totalPoints = totalPoints;
 	}
+	
+	/**
+	 * @param totalPoints the totalPoints to set
+	 */
+	public void ajouteUnTotalPoints() {
+		++this.totalPoints;
+	}	
 
 	/**
 	 * @return the navires
@@ -105,7 +112,7 @@ public class Joueur {
 	/**
 	 * @param grillePrincipale the grillePrincipale to set
 	 */
-	public void setgrillePrincipale(Grille grillePrincipale) {
+	public void setCaseGrillePrincipale(Grille grillePrincipale) {
 		this.grillePrincipale = grillePrincipale;
 	}
 
@@ -121,18 +128,18 @@ public class Joueur {
 	 */
 	public boolean verifierShot(Coordonnee point) {
 		//boolean touche=false;
-		switch (grillePrincipale.getCaseStatut(point.getLigne(), point.getLigne())) {
+		switch (grillePrincipale.getCaseStatut(point.getLigne(), point.getCol())) {
 			case 0: // case vide		       
 				    // 
 			        grillePrincipale.setCaseStatut(point.getLigne(), point.getCol(), 3);
 			        //joueurAdverse.
 					break;
 			case 1: // case occupé
-					grillePrincipale.setCaseStatut(point.getLigne(), point.getLigne(), 2);
+					grillePrincipale.setCaseStatut(point.getLigne(), point.getCol(), 2);
 					//touche=true;
 					break;
 		}
-		return grillePrincipale.getCaseStatut(point.getLigne(), point.getLigne())==1;
+		return grillePrincipale.getCaseStatut(point.getLigne(), point.getCol())==2;
 		
 		
 	}

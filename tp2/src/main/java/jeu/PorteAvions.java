@@ -17,7 +17,7 @@ public class PorteAvions extends Navire {
 	public PorteAvions() {	
 		this.orientation=0; // vertical par défaut
 		this.nom=NavireType.PORTEAVIONS;
-		this.nbPoints=0;
+		this.nbPoints=5;
 		this.taille=5;
 		
 	}
@@ -26,7 +26,7 @@ public class PorteAvions extends Navire {
 	 * @
 	 */
 	public boolean estCoule() {
-		return taille==nbPoints;
+		return this.getNbPoints()==0;
 	}
 	
 	/**
@@ -65,6 +65,13 @@ public class PorteAvions extends Navire {
 	public void setNbPoints(int nbPoints) {
 		this.nbPoints = nbPoints;
 	}
+	/**
+	 * Retirer 1 a la variable nbPoints
+	 */
+	public void retirerUnNbPoints() {
+		 --nbPoints;
+	}
+	
 	/**
 	 * @return the taille
 	 */
