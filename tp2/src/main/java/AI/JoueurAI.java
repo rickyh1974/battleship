@@ -136,7 +136,8 @@ public class JoueurAI extends Joueur {
 			}else{
 				returnValue=false;
 			};	*/
-		} while( ((this.getgrilleAdverse().getCaseStatut(randLigne, randCol)== 0 ) ? true : false) );
+			System.out.println(this.getgrilleAdverse().getCaseStatut(randLigne, randCol));
+		} while( ((this.getgrilleAdverse().getCaseStatut(randLigne, randCol)== 0 ) ? false : true) );
 		
 		
 		
