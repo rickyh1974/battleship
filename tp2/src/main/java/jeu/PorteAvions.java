@@ -3,7 +3,7 @@
  */
 package jeu;
 
-import java.util.ArrayList;
+
 
 /**
  * @author Ricky Hoben
@@ -19,14 +19,14 @@ public class PorteAvions extends Navire {
 		this.nom=NavireType.PORTEAVIONS;
 		this.nbPoints=0;
 		this.taille=5;
-		this.coordonnees=new ArrayList<Coordonnee>();
+		
 	}
 	
 	/**
 	 * @
 	 */
 	public boolean estCoule() {
-		return false;
+		return taille==nbPoints;
 	}
 	
 	/**
@@ -77,18 +77,7 @@ public class PorteAvions extends Navire {
 	public void setTaille(int taille) {
 		this.taille = taille;
 	}
-	/**
-	 * @return the coordonnees
-	 */
-	public Coordonnee getCoordonnees(int index) {
-		return coordonnees.get(index);
-	}
-	/**
-	 * @param coordonnees the coordonnees to set
-	 */
-	public void addCoordonnee(Coordonnee coordonnee) {
-		this.coordonnees.add(coordonnee);
-	}
+
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -98,8 +87,5 @@ public class PorteAvions extends Navire {
 		return "PorteAvions [estCoule()=" + estCoule() + ", getOrientation()=" + getOrientation() + ", getNom()="
 				+ getNom() + ", getNbPoints()=" + getNbPoints() + ", getTaille()=" + getTaille() + "]";
 	}
-
-	
-	
 
 }

@@ -3,7 +3,7 @@
  */
 package jeu;
 
-import java.util.ArrayList;
+
 
 /**
  * @author DELL
@@ -15,7 +15,7 @@ public abstract class Navire {
 	protected NavireType nom;
 	protected int nbPoints;
 	protected int taille;
-	protected ArrayList<Coordonnee> coordonnees;
+
 	
 	
 	/**
@@ -56,14 +56,6 @@ public abstract class Navire {
 	 * @param taille the taille to set
 	 */
 	public abstract void setTaille(int taille);
-	/**
-	 * @return the coordonnees
-	 */
-	public abstract Coordonnee getCoordonnees(int index);
-	/**
-	 * @param coordonnees the coordonnees to set
-	 */
-	public abstract void addCoordonnee(Coordonnee coordonnee);
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()

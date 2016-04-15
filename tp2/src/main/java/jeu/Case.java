@@ -5,7 +5,7 @@ package jeu;
 
 /**
  * @author Ricky Hoben
- *  statutCase 0 = rien, 1 = occuper, 2 = touché , 3 = non touché 
+ *  statutCase 0 = rien, 1 = occuper, 2 = touché  3 = demandé non touché
  *  navire contient le type de navire
  */
 public class Case {

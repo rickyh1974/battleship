@@ -3,7 +3,6 @@
  */
 package jeu;
 
-import java.util.ArrayList;
 
 /**
  * @author Ricky Hoben
@@ -19,7 +18,7 @@ public class ContreTorpilleur extends Navire {
 		this.nom=NavireType.CONTRETORPILLEUR;
 		this.nbPoints=0;
 		this.taille=3;
-		this.coordonnees=new ArrayList<Coordonnee>();
+
 	}
 	
 	/**
@@ -76,18 +75,6 @@ public class ContreTorpilleur extends Navire {
 	 */
 	public void setTaille(int taille) {
 		this.taille = taille;
-	}
-	/**
-	 * @return the coordonnees
-	 */
-	public Coordonnee getCoordonnees(int index) {
-		return coordonnees.get(index);
-	}
-	/**
-	 * @param coordonnees the coordonnees to set
-	 */
-	public void addCoordonnee(Coordonnee coordonnee) {
-		this.coordonnees.add(coordonnee);
 	}
 
 	/* (non-Javadoc)

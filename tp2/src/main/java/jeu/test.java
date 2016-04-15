@@ -16,10 +16,14 @@ public class test {
 		
 		
 		//JoueurAI joueurAI = new JoueurAI();
+		//Joueur joueur = new Joueur("Ricky");
 		Partie partie = new Partie("ricky", NiveauPartieType.FACILE);
-		
+		Coordonnee temp;
 		//for ( NavireType navireTypeTemp : NavireType.values() ) {
 			partie.placerNavire();
+			temp=partie.executerTour();
+			System.out.println(temp.toString());
+			
 			
 			//joueurAI.autoPlacerNavire(joueurAI.getNavire(navireTypeTemp).getTaille(), joueurAI.getNavire(navireTypeTemp).getNom());
 		//}

@@ -116,6 +116,27 @@ public class Joueur {
 		return NBR_NAVIRE;
 	}
 	
+	/**
+	 * @return the nBR_NAVIRE
+	 */
+	public boolean verifierShot(Coordonnee point) {
+		//boolean touche=false;
+		switch (grillePrincipale.getCaseStatut(point.getLigne(), point.getLigne())) {
+			case 0: // case vide		       
+				    // 
+			        grillePrincipale.setCaseStatut(point.getLigne(), point.getCol(), 3);
+			        //joueurAdverse.
+					break;
+			case 1: // case occupé
+					grillePrincipale.setCaseStatut(point.getLigne(), point.getLigne(), 2);
+					//touche=true;
+					break;
+		}
+		return grillePrincipale.getCaseStatut(point.getLigne(), point.getLigne())==1;
+		
+		
+	}
+	
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
