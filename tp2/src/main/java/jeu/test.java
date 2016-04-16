@@ -24,7 +24,7 @@ public class test {
 		Coordonnee tempRecu=new Coordonnee();
 	//	for ( NavireType navireTypeTemp : NavireType.values() ) {
 			partie.placerNavire();
-			for( int j=0;j<10;++j){
+			/*for( int j=0;j<10;++j){
 			
 				for( int i=0;i<10;++i) {
 					tempRecu.setLigne(j);
@@ -38,7 +38,7 @@ public class test {
 			}
 		//}	
 			
-			SauvegardeChargement.SauvegardeXML.sauvegardeXML(partie, "c:\\temp\\", "partie.xml");
+		/*	SauvegardeChargement.SauvegardeXML.sauvegardeXML(partie, "c:\\temp\\", "partie.xml");
 			partie.afficheTouteLesGrilles();
 			partie1=SauvegardeChargement.ChargementXML.chargementXML( "c:\\temp\\", "partie.xml");
 			//SauvegardeChargement.ChargementXML.chargementXML(partie, "c:\\temp\\", "partietest.xml");
