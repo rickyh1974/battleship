@@ -162,17 +162,17 @@ public class Joueur {
 	public boolean verifierShot(Coordonnee point) {
 		//boolean touche=false;
 		switch (grillePrincipale.getCaseStatut(point.getLigne(), point.getCol())) {
-			case 0: // case vide		       
+			case RIEN: // case vide		       
 				    // 
-			        grillePrincipale.setCaseStatut(point.getLigne(), point.getCol(), 3);
+			        grillePrincipale.setCaseStatut(point.getLigne(), point.getCol(), StatutCaseType.DEMANDENONTOUCHE);
 			        //joueurAdverse.
 					break;
-			case 1: // case occupé
-					grillePrincipale.setCaseStatut(point.getLigne(), point.getCol(), 2);
+			case OCCUPE: // case occupé
+					grillePrincipale.setCaseStatut(point.getLigne(), point.getCol(), StatutCaseType.TOUCHE);
 					//touche=true;
 					break;
 		}
-		return grillePrincipale.getCaseStatut(point.getLigne(), point.getCol())==2;
+		return grillePrincipale.getCaseStatut(point.getLigne(), point.getCol())==StatutCaseType.TOUCHE;
 		
 		
 	}
