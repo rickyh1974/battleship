@@ -11,10 +11,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import jeu.Partie;
 
 /**
  *
@@ -22,14 +24,36 @@ import javafx.stage.Stage;
  */
 public class MainAppController implements Initializable {
     
+    public Partie partie;
+    public String nom;
+    public String difficulte;
+    
+    public void setPartie(Partie p) {
+        partie = p;
+    }
+    
+    public void setNom(String s) {
+        this.nom = s;
+    }
+    
+    public void setDifficulte(String s) {
+        this.difficulte = s;
+        btnRecommencerPartie.setDisable(false);
+    }
     
     @FXML
     private Pane ecranCentre;
     
     @FXML
+    private Button btnRecommencerPartie;
+    
+    @FXML
     private void handleBtnNouvellePartie(ActionEvent event) throws Exception {
         ecranCentre.getChildren().clear();
-        ecranCentre.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/NouvellePartie.fxml")));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/NouvellePartie.fxml"));
+        ecranCentre.getChildren().add(loader.load());
+        NouvellePartieControlleur nouvellePartieControlleur = loader.<NouvellePartieControlleur>getController();
+        nouvellePartieControlleur.initData(this);
         
     }
     
@@ -37,6 +61,11 @@ public class MainAppController implements Initializable {
     private void handleBtnRecommencerPartie(ActionEvent event) throws Exception {
         
         ecranCentre.getChildren().clear();
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Partie.fxml"));
+        ecranCentre.getChildren().add(loader.load());
+        PartieControlleur controlleur = loader.<PartieControlleur>getController();
+        controlleur.initData(this.nom, this.difficulte);
     }
     
     @FXML
@@ -47,7 +76,12 @@ public class MainAppController implements Initializable {
         fileChooser.getExtensionFilters().add(extFilter);
         File fichier = fileChooser.showOpenDialog(new Stage());
         System.out.println(fichier); //TRACE
-        //TODO OUVERTURE DE FICHIER
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Partie.fxml"));
+        ecranCentre.getChildren().add(loader.load());
+        PartieControlleur controlleur = loader.<PartieControlleur>getController();
+        controlleur.initDataChargement(fichier);
+        
     }
     
     @FXML

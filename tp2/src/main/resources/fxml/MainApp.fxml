@@ -16,7 +16,7 @@
         <VBox id="menu" prefHeight="200.0" prefWidth="250.0" spacing="25.0">
          <children>
             <Button id="btnNouvellePartie" mnemonicParsing="false" onAction="#handleBtnNouvellePartie" text="Nouvelle Partie" />
-            <Button id="btnRecommencerPartie" mnemonicParsing="false" onAction="#handleBtnRecommencerPartie" text="Recommencer Partie" />
+            <Button id="btnRecommencerPartie" mnemonicParsing="false" onAction="#handleBtnRecommencerPartie" text="Recommencer Partie" disable="true"  />
             <Button id="btnCharger" mnemonicParsing="false" onAction="#handleBtnCharger" text="Charger" />
             <Button id="btnSauvegarder" mnemonicParsing="false" onAction="#handleBtnSauvegarder" text="Sauvegarder" />
             <Button id="btnVisualiser" mnemonicParsing="false" onAction="#handleBtnVisualiser" text="Visualiser" />

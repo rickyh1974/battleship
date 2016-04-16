@@ -260,8 +260,10 @@ public class GrilleControlleur implements Initializable{
                         if(newValue.equals(StatutCaseType.DEMANDENONTOUCHE)) {
                             tuile.toucher();
                         }
-                        if(newValue.equals(StatutCaseType.TOUCHE)) {
-                            tuile.estOccupe = true;
+                        if(newValue.equals(newValue.equals(StatutCaseType.TOUCHE))) {
+                            System.out.println("TOUCHE\nTOUCHE\nTOUCHE");
+                            //tuile.estOccupe = true;
+                            tuile.occuper();
                             tuile.toucher();
                         }
                         

@@ -1,6 +1,7 @@
 
 package Interface;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -45,6 +46,18 @@ public class PartieControlleur implements Initializable{
     @FXML
     private Label lblMessage;
     
+    public String getNom() {
+        return nom;
+    }
+    
+    public String getDifficulte() {
+        return difficulte;
+    }
+    
+    public Partie getPartie() {
+        return partie;
+    }
+    
     @FXML
     private void handleBtnCommencer(ActionEvent event) throws Exception {
         btnCommencer.setDisable(true);
@@ -86,11 +99,35 @@ public class PartieControlleur implements Initializable{
         grilleGauche.getChildren().add(loader.load());    
         GrilleControlleur controller = loader.<GrilleControlleur>getController();
         controller.initialiserGrilleGauche(this);
+    }
+    
+    public void initRecommencer(Partie partie) throws Exception {
+        //partie.initialiser();
+        //this.partie = partie;
+        this.nom = partie.getJoueurH().getNom();
+        this.difficulte = partie.getNiveau().name();
+        this.partie = new Partie(this.nom,NiveauPartieType.valueOf(this.difficulte));
         
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Grille.fxml"));
+        grilleGauche.getChildren().add(loader.load());
+        GrilleControlleur controller = loader.<GrilleControlleur>getController();
+        controller.initialiserGrilleGauche(this);
+    }
+    
+    public void initDataChargement(File fichier) throws Exception {
         
+        //partie = new Partie(nom,NiveauPartieType.valueOf(difficulte)); 
+        //CHARGEMENT
+        partie.chargement(fichier.getPath(), fichier.getName());
         
+        this.nom = partie.getJoueurH().getNom();
+        this.difficulte = partie.getNiveau().name();
         
 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Grille.fxml"));
+        grilleGauche.getChildren().add(loader.load());    
+        GrilleControlleur controller = loader.<GrilleControlleur>getController();
+        controller.initialiserGrilleGauche(this);
     }
     
     

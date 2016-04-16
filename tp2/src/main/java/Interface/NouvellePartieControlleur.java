@@ -13,6 +13,8 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 
 public class NouvellePartieControlleur implements Initializable{
+    
+    public MainAppController mainControlleur;
 
     @FXML
     private TextField champNom;
@@ -39,8 +41,16 @@ public class NouvellePartieControlleur implements Initializable{
             
             PartieControlleur controller = loader.<PartieControlleur>getController();
             controller.initData(nom, difficulte);
+            mainControlleur.setNom(controller.getNom());
+            mainControlleur.setDifficulte(controller.getDifficulte());
+            
         }
         
+    }
+    
+    public void initData(MainAppController mainAppControlleur) {
+        //mainControlleur = mainAppControlleur;
+        mainAppControlleur.setDifficulte("abcd");
     }
     
     @Override
