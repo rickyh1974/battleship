@@ -7,7 +7,6 @@ import java.util.LinkedList;
 
 
 import IOXML.Chargement;
-import IOXML.Sauvegarde;
 import AI.JoueurAI;
 import SauvegardeChargement.SauvegardeXML;
 
@@ -18,7 +17,7 @@ import SauvegardeChargement.SauvegardeXML;
 public class Partie {
 	
 
-	private LinkedList<Action> listFIFOAction = new LinkedList<Action>(); 
+    private LinkedList<Action> listFIFOAction = new LinkedList<Action>(); 
     private EtatPartieType etatPartie;
     private NiveauPartieType niveau;
     private JoueurAI joueurAI;
@@ -97,13 +96,13 @@ public class Partie {
 			action.setNomJoeur(joueurH.getNom());			
 			temp.setTouche(joueurAI.verifierShot(temp));
 			if (temp.isTouche()) {
-				joueurAI.getGrillePrincipale().setCaseStatut(temp.getLigne(), temp.getCol(), 2);
-				joueurH.getGrilleAdverse().setCaseStatut(temp.getLigne(), temp.getCol(), 2);
+				joueurAI.getGrillePrincipale().setCaseStatut(temp.getLigne(), temp.getCol(), StatutCaseType.TOUCHE);
+				joueurH.getGrilleAdverse().setCaseStatut(temp.getLigne(), temp.getCol(), StatutCaseType.TOUCHE);
 				joueurH.ajouteUnTotalPoints();
 				joueurAI.getNavire(joueurAI.getGrillePrincipale().getNomNavire(temp.getLigne(), temp.getCol())).retirerUnNbPoints();
 			} else {
-				joueurAI.getGrillePrincipale().setCaseStatut(temp.getLigne(), temp.getCol(), 3);
-				joueurH.getGrilleAdverse().setCaseStatut(temp.getLigne(), temp.getCol(), 3);
+				joueurAI.getGrillePrincipale().setCaseStatut(temp.getLigne(), temp.getCol(), StatutCaseType.DEMANDENONTOUCHE);
+				joueurH.getGrilleAdverse().setCaseStatut(temp.getLigne(), temp.getCol(), StatutCaseType.DEMANDENONTOUCHE);
 			}
 			action.setPoint(temp);
 			listFIFOAction.add(action);
