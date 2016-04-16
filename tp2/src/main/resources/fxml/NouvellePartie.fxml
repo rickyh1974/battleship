@@ -22,18 +22,17 @@
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
          <children>
             <Label text="Difficulté" />
+            <fx:define>
+                 <ToggleGroup fx:id="difficulteToggle" />
+            </fx:define>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <RadioButton mnemonicParsing="false" selected="true" text="Facile" userData="Facile">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="difficulteToggle" />
-                     </toggleGroup>
-                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" selected="true" text="Facile" toggleGroup="$difficulteToggle" userData="FACILE"/>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <RadioButton mnemonicParsing="false" text="Difficile" toggleGroup="$difficulteToggle" userData="Difficile"/>
+                  <RadioButton mnemonicParsing="false" text="Difficile" toggleGroup="$difficulteToggle" userData="DIFFICILE"/>
                </children>
             </HBox>
          </children>
