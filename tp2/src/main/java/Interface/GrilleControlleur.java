@@ -2,6 +2,8 @@
 package Interface;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,8 +18,19 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import jeu.Case;
+import jeu.Coordonnee;
+import jeu.StatutCaseType;
 
 public class GrilleControlleur implements Initializable{
+    
+    public ObjectProperty<Coordonnee> coordonneeProperty = new SimpleObjectProperty();
     
     @FXML
     private GridPane grille;
@@ -115,13 +128,10 @@ public class GrilleControlleur implements Initializable{
     
     private void handleMouseClick(MouseEvent mouseEvent) {
         Tuile source = (Tuile)mouseEvent.getSource();
-        if(source.estTouche == false) {
-            Integer col = grille.getColumnIndex(source);
-            Integer row = grille.getRowIndex(source);
-            System.out.println("Source : " + source + "  -  " + "col : " + col + " row : " + row); //TRACE  
-            source.toucher();
-            (source.getScene()).setCursor(Cursor.DEFAULT);
-        }
+        Integer col = grille.getColumnIndex(source)-1;
+        Integer row = grille.getRowIndex(source)-1;
+        coordonneeProperty.set(new Coordonnee(col,row));
+        (source.getScene()).setCursor(Cursor.DEFAULT);
     }
     
     private void onMouseEnteredRectangleCursor(MouseEvent mouseEvent) {
@@ -152,7 +162,10 @@ public class GrilleControlleur implements Initializable{
         
     }    
     
-    public void initialiserGrilleGauche() {
+    public void initialiserGrilleGauche(PartieControlleur partieControlleur) {
+        
+        HashMap<Integer, ArrayList<Case>> cases = partieControlleur.partie.getJoueurH().getGrillePrincipale().getCases();
+        
         for(int i = 1; i < 11; i++) {
             for (int j = 1; j < 11; j++) {
                 
@@ -172,16 +185,9 @@ public class GrilleControlleur implements Initializable{
                     rectangle.setOnDragDone((DragEvent dragEvent) -> {
                         onDragDone(dragEvent);
                     });
-                    
-                    
-                    
-                    
-                    
                 }
-                //onDragOver="#onDragOverEvent" onDragEntered="#onDragEnteredEvent" onDragExited="#onDragExitedEvent" onDragDropped="#onDragDroppedEvent"
+
                 
-                  //      <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="#0e4e8a" height="20.0" stroke="BLACK" strokeType="INSIDE" width="20.0" onDragDetected="#onDragDetected" onDragDone="#onDragDoneEvent" />
-                        
                 StackPane stackPane = new StackPane();
                 stackPane.getChildren().add(tuile);
                 if(rectangle != null) {
@@ -206,6 +212,22 @@ public class GrilleControlleur implements Initializable{
                     onDragDropped(dragEvent);
                 });
                 
+                
+                final ChangeListener changeListener = (ChangeListener) (ObservableValue observableValue, Object oldValue, Object newValue) -> {
+                    if(tuile.estTouche == false) {
+                        if(newValue.equals(StatutCaseType.DEMANDENONTOUCHE)) {
+                            tuile.toucher();
+                        }
+                        if(newValue.equals(StatutCaseType.TOUCHE)) {
+                            tuile.estOccupe = true;
+                            tuile.toucher();
+                        }
+                        
+                    }
+                };
+                
+                cases.get(i-1).get(j-1).statutCaseProperty().addListener(changeListener);
+                
                 GridPane.setConstraints(stackPane, i, j);
                 GridPane.setHalignment(stackPane, HPos.CENTER);
                 GridPane.setValignment(stackPane, VPos.CENTER);
@@ -214,7 +236,10 @@ public class GrilleControlleur implements Initializable{
         }
     }
     
-    public void initialiserGrilleDroite() {
+    public void initialiserGrilleDroite(PartieControlleur partieControlleur) {
+        
+        HashMap<Integer, ArrayList<Case>> cases = partieControlleur.partie.getJoueurH().getGrilleAdverse().getCases();
+        
         for(int i = 1; i < 11; i++) {
             for (int j = 1; j < 11; j++) {
                 
@@ -229,6 +254,22 @@ public class GrilleControlleur implements Initializable{
                 tuile.setOnMouseExited((MouseEvent mouseEvent) -> {
                     onMouseExitedCursor(mouseEvent);
                 });
+                
+                final ChangeListener changeListener = (ChangeListener) (ObservableValue observableValue, Object oldValue, Object newValue) -> {
+                    if(tuile.estTouche == false) {
+                        if(newValue.equals(StatutCaseType.DEMANDENONTOUCHE)) {
+                            tuile.toucher();
+                        }
+                        if(newValue.equals(StatutCaseType.TOUCHE)) {
+                            tuile.estOccupe = true;
+                            tuile.toucher();
+                        }
+                        
+                    }
+                };
+                
+                cases.get(i-1).get(j-1).statutCaseProperty().addListener(changeListener);
+        
                 GridPane.setConstraints(tuile, i, j);
                 GridPane.setHalignment(tuile, HPos.CENTER);
                 GridPane.setValignment(tuile, VPos.CENTER);
