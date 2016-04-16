@@ -35,7 +35,7 @@ public class JoueurAI extends Joueur {
 	public void autoPlacerNavire() {
 		
 		int randLigne=0,randCol=0,randOrient=0,compteur=0,tempCol=0,tempLigne=0,tailleNavire=0;
-		Grille grille = this.getgrillePrincipale();
+		Grille grille = this.getGrillePrincipale();
 		boolean returnVal=false;
 		final int MaxLigne = 10;
 		NavireType nomNavire;
@@ -136,8 +136,8 @@ public class JoueurAI extends Joueur {
 			}else{
 				returnValue=false;
 			};	*/
-			System.out.println(this.getgrilleAdverse().getCaseStatut(randLigne, randCol));
-		} while( ((this.getgrilleAdverse().getCaseStatut(randLigne, randCol)== 0 ) ? false : true) );
+			System.out.println(this.getGrilleAdverse().getCaseStatut(randLigne, randCol));
+		} while( ((this.getGrilleAdverse().getCaseStatut(randLigne, randCol)== 0 ) ? false : true) );
 		
 		
 		

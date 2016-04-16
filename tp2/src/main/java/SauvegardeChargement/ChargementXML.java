@@ -8,6 +8,9 @@ import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import jeu.Partie;;
+
+
 /**
  * @author DELL
  *
@@ -17,7 +20,7 @@ public class ChargementXML {
 	/**
 	 * 
 	 */
-	public static void chargementXML(Object objet, String path, String nomFichier) {
+	public static Partie chargementXML(String path, String nomFichier) {
 		
 		XMLDecoder decoder=null;
 		try {
@@ -25,9 +28,11 @@ public class ChargementXML {
 		} catch (FileNotFoundException e) {
 			System.out.println("ERROR: File dvd.xml not found");
 		}
-		objet=(Object)decoder.readObject();
-		System.out.println(objet);
-
+		Partie object=(Partie)decoder.readObject();
+		//System.out.println(object);
+		System.out.println("Dans chargement");
+		object.afficheTouteLesGrilles();
+		return object;
 	}
 		// TODO Auto-generated constructor stub
 }
