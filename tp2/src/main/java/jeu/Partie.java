@@ -6,10 +6,10 @@ package jeu;
 import java.util.LinkedList;
 
 
-import IOXML.Chargement;
+
 import AI.JoueurAI;
 import SauvegardeChargement.SauvegardeXML;
-
+import SauvegardeChargement.ChargementXML;
 /**
  * @author DELL
  *
@@ -186,15 +186,15 @@ public class Partie {
 		this.niveau = niveau;
 	}
 
-	/*public boolean sauvegardePartie(String path, String nomFichier) {
+	public boolean sauvegardePartie(String path, String nomFichier) {
 				
-		 return SauvegardeXML.sauvegardeXML(partieXML, path, nomFichier);
+		 return SauvegardeXML.sauvegardeXML(this, path, nomFichier);
 		 
 	}
-	public boolean chargement( String path, String nomFichier) {
+	public Partie chargement( String path, String nomFichier) {
 		
-		return Chargement.chargementXML(, path, nomFichier);
-	}*/
+		return ChargementXML.chargementXML( path, nomFichier);
+	}
 	
 
 

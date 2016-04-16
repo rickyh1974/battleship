@@ -22,21 +22,7 @@ public class Joueur {
 	/**
 	 * constructeur de la class joueur
 	 */
-	public Joueur() {
-		
-	/*	this.navires = new HashMap<NavireType,Navire>();
-		
-		// création des bateaux
-		this.navires.put(NavireType.PORTEAVIONS, new PorteAvions());
-		this.navires.put(NavireType.CROISSEUR, new Croisseur());
-		this.navires.put(NavireType.CONTRETORPILLEUR, new ContreTorpilleur());
-		this.navires.put(NavireType.SOUSMARIN, new SousMarin());
-		this.navires.put(NavireType.TORPILLEUR, new Torpilleur());
-		
-		grilleAdverse = new Grille();
-		grillePrincipale = new Grille();*/
-		//constructeur vide convention pour XML encoder/decoder covention java bean
-	}
+	public Joueur() {}
 
 	/**
 	 * constructeur de la class joueur
@@ -162,7 +148,7 @@ public class Joueur {
 	public boolean verifierShot(Coordonnee point) {
 		//boolean touche=false;
 		switch (grillePrincipale.getCaseStatut(point.getLigne(), point.getCol())) {
-			case RIEN: // case vide		       
+			case RIEN : // case vide		       
 				    // 
 			        grillePrincipale.setCaseStatut(point.getLigne(), point.getCol(), StatutCaseType.DEMANDENONTOUCHE);
 			        //joueurAdverse.
@@ -171,6 +157,9 @@ public class Joueur {
 					grillePrincipale.setCaseStatut(point.getLigne(), point.getCol(), StatutCaseType.TOUCHE);
 					//touche=true;
 					break;
+			default:
+					break;
+					
 		}
 		return grillePrincipale.getCaseStatut(point.getLigne(), point.getCol())==StatutCaseType.TOUCHE;
 		

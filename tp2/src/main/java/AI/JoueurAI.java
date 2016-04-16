@@ -8,6 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import jeu.Grille;
 import jeu.NavireType;
+import jeu.StatutCaseType;
 import jeu.Coordonnee;
 import jeu.Joueur;
 
@@ -60,7 +61,7 @@ public class JoueurAI extends Joueur {
 					//
 					System.out.println("randOrient="+randOrient+"tempLigne="+tempLigne+" randLigne="+randLigne+"tempCol="+tempCol+" randCol="+randCol);
 					if ( randLigne <= (MaxLigne-tailleNavire) ){
-						while( tempLigne < 10 && grille.getCaseStatut(tempLigne, randCol)==0 && compteur != tailleNavire ) {					
+						while( tempLigne < 10 && grille.getCaseStatut(tempLigne, randCol)==StatutCaseType.RIEN && compteur != tailleNavire ) {					
 							++compteur;
 							++tempLigne;
 							
@@ -77,7 +78,7 @@ public class JoueurAI extends Joueur {
 				}else{
 					System.out.println("randOrient="+randOrient+"tempLigne="+tempLigne+" randLigne="+randLigne+"tempCol="+tempCol+" randCol="+randCol);
 					if ( randCol <= (MaxLigne-tailleNavire) ){
-						while( tempCol < 10 && grille.getCaseStatut(randLigne, tempCol)==0 && compteur != tailleNavire ) {					
+						while( tempCol < 10 && grille.getCaseStatut(randLigne, tempCol)==StatutCaseType.RIEN && compteur != tailleNavire ) {					
 							++compteur;
 							++tempCol;
 						}
@@ -99,7 +100,7 @@ public class JoueurAI extends Joueur {
 			    while(  compteur != tailleNavire ) {					
 	
 					grille.setNomNavire(tempLigne,randCol, nomNavire);
-					grille.setCaseStatut(tempLigne, randCol, 1);
+					grille.setCaseStatut(tempLigne, randCol, StatutCaseType.OCCUPE);
 					++compteur;
 					++tempLigne;
 				}
@@ -109,7 +110,7 @@ public class JoueurAI extends Joueur {
 			    while(  compteur != tailleNavire ) {					
 					System.out.println("randLigne="+randLigne+" tempCol="+tempCol+" randCol="+randCol);
 					grille.setNomNavire(randLigne,tempCol, nomNavire);
-					grille.setCaseStatut(randLigne,tempCol, 1);
+					grille.setCaseStatut(randLigne,tempCol, StatutCaseType.OCCUPE);
 					++compteur;
 					++tempCol;
 					
@@ -137,7 +138,7 @@ public class JoueurAI extends Joueur {
 				returnValue=false;
 			};	*/
 			System.out.println(this.getGrilleAdverse().getCaseStatut(randLigne, randCol));
-		} while( ((this.getGrilleAdverse().getCaseStatut(randLigne, randCol)== 0 ) ? false : true) );
+		} while( ((this.getGrilleAdverse().getCaseStatut(randLigne, randCol)== StatutCaseType.RIEN ) ? false : true) );
 		
 		
 		
