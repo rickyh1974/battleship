@@ -73,7 +73,7 @@ public class Grille {
 	 * 1 coordonnée déjà donnée par joueur
 	 * 2 coordonnée touché  
 	 */
-	public void setCaseStatut(int ligne, int col, int statut ){
+	public void setCaseStatut(int ligne, int col, StatutCaseType statut ){
 		
 		this.cases.get(ligne).get(col).setStatutCase(statut);
 			 	
@@ -85,7 +85,7 @@ public class Grille {
 	 * ligne qui peut être un chiffre de 1 à 9
 	 * col qui peut être un chiffre de 1 à 9
 	 */
-	public int getCaseStatut(int ligne, int col ) {
+	public StatutCaseType getCaseStatut(int ligne, int col ) {
 		
 		return this.cases.get(ligne).get(col).getStatutCase();
 	 	
