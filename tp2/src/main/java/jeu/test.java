@@ -19,10 +19,10 @@ public class test {
 		//JoueurAI joueurAI = new JoueurAI();
 		//Joueur joueur = new Joueur("Ricky");
 		Partie partie = new Partie("ricky", NiveauPartieType.FACILE);
-		Partie partie1= new Partie("ricky", NiveauPartieType.FACILE);
+		Partie partie1= null;
 		Coordonnee temp;
 		Coordonnee tempRecu=new Coordonnee();
-		//for ( NavireType navireTypeTemp : NavireType.values() ) {
+	//	for ( NavireType navireTypeTemp : NavireType.values() ) {
 			partie.placerNavire();
 			for( int j=0;j<10;++j){
 			
@@ -36,17 +36,17 @@ public class test {
 				}
 
 			}
+		//}	
 			
 			SauvegardeChargement.SauvegardeXML.sauvegardeXML(partie, "c:\\temp\\", "partie.xml");
-			SauvegardeChargement.SauvegardeXML.sauvegardeXML(partie, "c:\\temp\\", "grillePrincAI.xml");
-			SauvegardeChargement.SauvegardeXML.sauvegardeXML((partie.getJoueurAI().getGrilleAdverse()), "c:\\temp\\", "grilleAdverseAI.xml");
-			SauvegardeChargement.SauvegardeXML.sauvegardeXML(partie, "c:\\temp\\", "partieTestAppend.xml");
-			SauvegardeChargement.SauvegardeXML.sauvegardeXML(partie.getJoueurAI().getGrillePrincipale(), "c:\\temp\\", "partieTestAppend.xml");
-			SauvegardeChargement.SauvegardeXML.sauvegardeXML(partie.getJoueurAI().getGrilleAdverse(), "c:\\temp\\", "partieTestAppend.xml");
-			
-			//SauvegardeChargement.ChargementXML.chargementXML(partie1, "c:\\temp\\", "partie.xml");
-            partie1.afficheTouteLesGrilles();
-            System.out.println(partie.toString());
+			partie.afficheTouteLesGrilles();
+			partie1=SauvegardeChargement.ChargementXML.chargementXML( "c:\\temp\\", "partie.xml");
+			//SauvegardeChargement.ChargementXML.chargementXML(partie, "c:\\temp\\", "partietest.xml");
+			System.out.println("Object partie");
+			partie1.afficheTouteLesGrilles();
+			/*System.out.println("Object partie 1");
+            partie.afficheTouteLesGrilles();
+            System.out.println(partie1.toString());*/
             
 			
     }

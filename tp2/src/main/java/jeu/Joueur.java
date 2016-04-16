@@ -24,7 +24,7 @@ public class Joueur {
 	 */
 	public Joueur() {
 		
-		this.navires = new HashMap<NavireType,Navire>();
+	/*	this.navires = new HashMap<NavireType,Navire>();
 		
 		// création des bateaux
 		this.navires.put(NavireType.PORTEAVIONS, new PorteAvions());
@@ -34,7 +34,7 @@ public class Joueur {
 		this.navires.put(NavireType.TORPILLEUR, new Torpilleur());
 		
 		grilleAdverse = new Grille();
-		grillePrincipale = new Grille();
+		grillePrincipale = new Grille();*/
 		//constructeur vide convention pour XML encoder/decoder covention java bean
 	}
 

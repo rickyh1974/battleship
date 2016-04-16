@@ -187,15 +187,15 @@ public class Partie {
 		this.niveau = niveau;
 	}
 
-	public boolean sauvegardePartie(Partie partieXML,String path, String nomFichier) {
+	/*public boolean sauvegardePartie(String path, String nomFichier) {
 				
 		 return SauvegardeXML.sauvegardeXML(partieXML, path, nomFichier);
 		 
 	}
-	public boolean chargement(String partieXML, String path, String nomFichier) {
+	public boolean chargement( String path, String nomFichier) {
 		
-		return Chargement.chargementXML(partieXML, path, nomFichier);
-	}
+		return Chargement.chargementXML(, path, nomFichier);
+	}*/
 	
 
 
