@@ -54,5 +54,5 @@ public class Action {
 	public void setPoint(Coordonnee point) {
 		this.point = point;
 	}
-
+        
 }
