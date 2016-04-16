@@ -33,7 +33,8 @@ public class Partie {
      joueurAI = new JoueurAI();
      joueurH = new Joueur(nomJoueur);
      etatPartie = EtatPartieType.tourJoueurH;
-     this.niveau = niveau;  
+     this.niveau = niveau;
+     placerNavire();
 		
 		// TODO Auto-generated constructor stub
 	}
