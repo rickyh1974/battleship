@@ -10,6 +10,7 @@ package jeu;
  */
 public class Torpilleur extends Navire {
 
+	
 	/**
 	 * 
 	 */
@@ -88,6 +89,8 @@ public class Torpilleur extends Navire {
 	 */
 	@Override
 	public String toString() {
+		
+		
 		return "PorteAvions [estCoule()=" + estCoule() + ", getOrientation()=" + getOrientation() + ", getNom()="
 				+ getNom() + ", getNbPoints()=" + getNbPoints() + ", getTaille()=" + getTaille() + "]";
 	}

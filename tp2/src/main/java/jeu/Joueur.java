@@ -18,6 +18,25 @@ public class Joueur {
 	private HashMap<NavireType,Navire> navires;
 	private Grille grilleAdverse;
 	private Grille grillePrincipale;
+	
+	/**
+	 * constructeur de la class joueur
+	 */
+	public Joueur() {
+		
+		this.navires = new HashMap<NavireType,Navire>();
+		
+		// création des bateaux
+		this.navires.put(NavireType.PORTEAVIONS, new PorteAvions());
+		this.navires.put(NavireType.CROISSEUR, new Croisseur());
+		this.navires.put(NavireType.CONTRETORPILLEUR, new ContreTorpilleur());
+		this.navires.put(NavireType.SOUSMARIN, new SousMarin());
+		this.navires.put(NavireType.TORPILLEUR, new Torpilleur());
+		
+		grilleAdverse = new Grille();
+		grillePrincipale = new Grille();
+		//constructeur vide convention pour XML encoder/decoder covention java bean
+	}
 
 	/**
 	 * constructeur de la class joueur
@@ -91,28 +110,28 @@ public class Joueur {
 	/**
 	 * @return the grilleAdverse
 	 */
-	public Grille getgrilleAdverse() {
+	public Grille getGrilleAdverse() {
 		return grilleAdverse;
 	}
 
 	/**
 	 * @param grilleAdverse the grilleAdverse to set
 	 */
-	public void setgrilleAdverse(Grille grilleAdverse) {
+	public void setGrilleAdverse(Grille grilleAdverse) {
 		this.grilleAdverse = grilleAdverse;
 	}
 
 	/**
 	 * @return the grillePrincipale
 	 */
-	public Grille getgrillePrincipale() {
+	public Grille getGrillePrincipale() {
 		return grillePrincipale;
 	}
 
 	/**
 	 * @param grillePrincipale the grillePrincipale to set
 	 */
-	public void setCaseGrillePrincipale(Grille grillePrincipale) {
+	public void setGrillePrincipale(Grille grillePrincipale) {
 		this.grillePrincipale = grillePrincipale;
 	}
 
@@ -123,6 +142,20 @@ public class Joueur {
 		return NBR_NAVIRE;
 	}
 	
+	/**
+	 * @return the navires
+	 */
+	public HashMap<NavireType, Navire> getNavires() {
+		return navires;
+	}
+
+	/**
+	 * @param navires the navires to set
+	 */
+	public void setNavires(HashMap<NavireType, Navire> navires) {
+		this.navires = navires;
+	}
+
 	/**
 	 * @return the nBR_NAVIRE
 	 */

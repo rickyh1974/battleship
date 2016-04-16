@@ -50,6 +50,20 @@ public class Grille {
 	}
 	
 	/**
+	 * @return the cases
+	 */
+	public HashMap<Integer, ArrayList<Case>> getCases() {
+		return cases;
+	}
+
+	/**
+	 * @param cases the cases to set
+	 */
+	public void setCases(HashMap<Integer, ArrayList<Case>> cases) {
+		this.cases = cases;
+	}
+
+	/**
 	 * setCaseStatut
 	 * parametres: 
 	 * ligne qui peut être un chiffre de 1 à 9
@@ -102,8 +116,5 @@ public class Grille {
 		
 		   System.out.println();
 		}
-	}
-	
-	
-
+	}	
 }

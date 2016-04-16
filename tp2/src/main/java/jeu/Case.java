@@ -12,6 +12,13 @@ public class Case {
 	
 	int statutCase=0;
 	NavireType nomNavirePresent=null;
+	
+	/**
+	 * Constructeur par defaut convention java bean pour XML decoder et encoder .
+	 */
+	public Case(){
+		
+	}
 
 	/**
 	 * @return the statutCase

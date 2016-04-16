@@ -5,10 +5,11 @@ package jeu;
 
 import java.util.LinkedList;
 
+
 import IOXML.Chargement;
 import IOXML.Sauvegarde;
 import AI.JoueurAI;
-import java.util.Scanner; // testing purposes only
+import SauvegardeChargement.SauvegardeXML;
 
 /**
  * @author DELL
@@ -16,11 +17,16 @@ import java.util.Scanner; // testing purposes only
  */
 public class Partie {
 	
+
 	private LinkedList<Action> listFIFOAction = new LinkedList<Action>(); 
     private EtatPartieType etatPartie;
     private NiveauPartieType niveau;
     private JoueurAI joueurAI;
     private Joueur joueurH;
+    
+    public Partie() {
+    	// serialization xml convention java beans
+    }
 	/**
 	 * 
 	 */
@@ -63,13 +69,13 @@ public class Partie {
 	
 	public void afficheTouteLesGrilles() {
 		System.out.println("Grille principale joueur AI");
-		joueurAI.getgrillePrincipale().afficheGrille();
+		joueurAI.getGrillePrincipale().afficheGrille();
 		System.out.println("Grille Adverse joueur AI");
-		joueurAI.getgrilleAdverse().afficheGrille();
+		joueurAI.getGrilleAdverse().afficheGrille();
 		System.out.println("Grille principale joueur H");
-		joueurH.getgrillePrincipale().afficheGrille();
+		joueurH.getGrillePrincipale().afficheGrille();
 		System.out.println("Grille Adverse joueur H");
-		joueurH.getgrilleAdverse().afficheGrille();
+		joueurH.getGrilleAdverse().afficheGrille();
 	}
 	
 	public Coordonnee executerTour(Coordonnee temp) {
@@ -91,13 +97,13 @@ public class Partie {
 			action.setNomJoeur(joueurH.getNom());			
 			temp.setTouche(joueurAI.verifierShot(temp));
 			if (temp.isTouche()) {
-				joueurAI.getgrillePrincipale().setCaseStatut(temp.getLigne(), temp.getCol(), 2);
-				joueurH.getgrilleAdverse().setCaseStatut(temp.getLigne(), temp.getCol(), 2);
+				joueurAI.getGrillePrincipale().setCaseStatut(temp.getLigne(), temp.getCol(), 2);
+				joueurH.getGrilleAdverse().setCaseStatut(temp.getLigne(), temp.getCol(), 2);
 				joueurH.ajouteUnTotalPoints();
-				joueurAI.getNavire(joueurAI.getgrillePrincipale().getNomNavire(temp.getLigne(), temp.getCol())).retirerUnNbPoints();
+				joueurAI.getNavire(joueurAI.getGrillePrincipale().getNomNavire(temp.getLigne(), temp.getCol())).retirerUnNbPoints();
 			} else {
-				joueurAI.getgrillePrincipale().setCaseStatut(temp.getLigne(), temp.getCol(), 3);
-				joueurH.getgrilleAdverse().setCaseStatut(temp.getLigne(), temp.getCol(), 3);
+				joueurAI.getGrillePrincipale().setCaseStatut(temp.getLigne(), temp.getCol(), 3);
+				joueurH.getGrilleAdverse().setCaseStatut(temp.getLigne(), temp.getCol(), 3);
 			}
 			action.setPoint(temp);
 			listFIFOAction.add(action);
@@ -181,8 +187,10 @@ public class Partie {
 		this.niveau = niveau;
 	}
 
-	public boolean sauvegardePartie(String partieXML,String path, String nomFichier) {
-		return Sauvegarde.sauvegardeXML(partieXML, path, nomFichier);
+	public boolean sauvegardePartie(Partie partieXML,String path, String nomFichier) {
+				
+		 return SauvegardeXML.sauvegardeXML(partieXML, path, nomFichier);
+		 
 	}
 	public boolean chargement(String partieXML, String path, String nomFichier) {
 		
@@ -190,6 +198,15 @@ public class Partie {
 	}
 	
 
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Partie [listFIFOAction=" + listFIFOAction + ", etatPartie=" + etatPartie + ", niveau=" + niveau
+				+ ", joueurAI=" + joueurAI + ", joueurH=" + joueurH + "]";
+	}
 	/**
 	 * @param args
 	 */
