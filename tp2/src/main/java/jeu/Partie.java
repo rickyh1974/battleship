@@ -88,45 +88,48 @@ public class Partie {
 	public void executerTour(Coordonnee temp) {
 		
 		Action action=new Action();
+		Action actionAI=new Action();
 		Coordonnee AItempRandomShot=new Coordonnee();		
 			
-		//if (getEtatPartie()==EtatPartieType.tourJoueurAI){
-
+		// tour du joueur humain		
+		action.setNomJoeur(joueurH.getNom());			
+		temp.setTouche(joueurAI.verifierShot(temp));
+		if (temp.isTouche()) {
+			joueurAI.getGrillePrincipale().setCaseStatut(temp.getLigne(), temp.getCol(), StatutCaseType.TOUCHE);
+			joueurH.getGrilleAdverse().setCaseStatut(temp.getLigne(), temp.getCol(), StatutCaseType.TOUCHE);
+			joueurH.ajouteUnTotalPoints();
+			joueurAI.getNavire(joueurAI.getGrillePrincipale().getNomNavire(temp.getLigne(), temp.getCol())).retirerUnNbPoints();
+		} else {
+			joueurAI.getGrillePrincipale().setCaseStatut(temp.getLigne(), temp.getCol(), StatutCaseType.DEMANDENONTOUCHE);
+			joueurH.getGrilleAdverse().setCaseStatut(temp.getLigne(), temp.getCol(), StatutCaseType.DEMANDENONTOUCHE);
 			
-		///} else if (this.getEtatPartie()==EtatPartieType.tourJoueurH) /*{*/
-		// tour du joueur humain	
-		do {
-			action.setNomJoeur(joueurH.getNom());			
-			temp.setTouche(joueurAI.verifierShot(temp));
-			if (temp.isTouche()) {
-				joueurAI.getGrillePrincipale().setCaseStatut(temp.getLigne(), temp.getCol(), StatutCaseType.TOUCHE);
-				joueurH.getGrilleAdverse().setCaseStatut(temp.getLigne(), temp.getCol(), StatutCaseType.TOUCHE);
-				joueurH.ajouteUnTotalPoints();
-				joueurAI.getNavire(joueurAI.getGrillePrincipale().getNomNavire(temp.getLigne(), temp.getCol())).retirerUnNbPoints();
-			} else {
-				joueurAI.getGrillePrincipale().setCaseStatut(temp.getLigne(), temp.getCol(), StatutCaseType.DEMANDENONTOUCHE);
-				joueurH.getGrilleAdverse().setCaseStatut(temp.getLigne(), temp.getCol(), StatutCaseType.DEMANDENONTOUCHE);
-			}
-			action.setPoint(temp);
-			listFIFOAction.add(action);
-			
-			afficheTouteLesGrilles();
-		}while(temp.isTouche()&& !verifierVictoire());
-		
-		do {
-			action.setNomJoeur(joueurAI.getNom());
-			AItempRandomShot=joueurAI.RandomShots();
-			AItempRandomShot.setTouche(joueurH.verifierShot(AItempRandomShot));
-			this.setEtatPartie(EtatPartieType.tourJoueurH);
-			action.setPoint(AItempRandomShot);
-			listFIFOAction.add(action);
+			// tour joueur AI
+			do {
+				actionAI.setNomJoeur(joueurAI.getNom());
+				AItempRandomShot=joueurAI.RandomShots();
+				AItempRandomShot.setTouche(joueurH.verifierShot(AItempRandomShot));
+				if ( temp.isTouche()) {
+					joueurH.getGrillePrincipale().setCaseStatut(AItempRandomShot.getLigne(), AItempRandomShot.getCol(), StatutCaseType.TOUCHE);
+					joueurAI.getGrilleAdverse().setCaseStatut(AItempRandomShot.getLigne(), AItempRandomShot.getCol(), StatutCaseType.TOUCHE);
+					joueurAI.ajouteUnTotalPoints();
+					joueurH.getNavire(joueurH.getGrillePrincipale().getNomNavire(AItempRandomShot.getLigne(), AItempRandomShot.getCol())).retirerUnNbPoints();
+				} else {
+					joueurH.getGrillePrincipale().setCaseStatut(AItempRandomShot.getLigne(), AItempRandomShot.getCol(), StatutCaseType.DEMANDENONTOUCHE);
+					joueurAI.getGrilleAdverse().setCaseStatut(AItempRandomShot.getLigne(), AItempRandomShot.getCol(), StatutCaseType.DEMANDENONTOUCHE);
+				}
+				//this.setEtatPartie(EtatPartieType.tourJoueurH);
+				actionAI.setPoint(AItempRandomShot);
+				listFIFOAction.add(actionAI);
 
-			afficheTouteLesGrilles();
-		}while(AItempRandomShot.isTouche()&& !verifierVictoire());
+				afficheTouteLesGrilles();
+			}while(AItempRandomShot.isTouche()&& !verifierVictoire());
+
+		}
+		action.setPoint(temp);
+		listFIFOAction.add(action);
 		
-		//}
+		afficheTouteLesGrilles();
 		
-		//return temp;
 		
 		// TODO Auto-generated constructor stub
 
