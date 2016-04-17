@@ -22,6 +22,7 @@ public class Partie {
     private NiveauPartieType niveau;
     private JoueurAI joueurAI;
     private Joueur joueurH;
+    private static final int scorePourVictoire=17;
     
     public Partie() {
     	// serialization xml convention java beans
@@ -33,13 +34,19 @@ public class Partie {
      joueurAI = new JoueurAI();
      joueurH = new Joueur(nomJoueur);
      etatPartie = EtatPartieType.tourJoueurH;
-     this.niveau = niveau;  
+     this.niveau = niveau;
+     placerNavire();
 		
 		// TODO Auto-generated constructor stub
 	}
 	
 	public void initialiser(){
 		// TODO Auto-generated constructor stub
+	   /*  joueurAI. = new JoueurAI();
+	     joueurH = new Joueur(this.joueurH.getNom());
+	     etatPartie = EtatPartieType.tourJoueurH;
+	     listFIFOAction.clear();
+	     placerNavire();*/
 	}
 	
 	public void placerNavire(){
@@ -61,9 +68,10 @@ public class Partie {
 
 	}
 	
-	public void verifierVictoire() {
+	public Boolean verifierVictoire() {
+		
+		return joueurAI.getTotalPoints()==scorePourVictoire||joueurH.getTotalPoints()==scorePourVictoire;
 		// TODO Auto-generated constructor stub
-
 	}
 	
 	public void afficheTouteLesGrilles() {
@@ -77,11 +85,57 @@ public class Partie {
 		joueurH.getGrilleAdverse().afficheGrille();
 	}
 	
-	public Coordonnee executerTour(Coordonnee temp) {
+	public void executerTour(Coordonnee temp) {
 		
 		Action action=new Action();
+		Coordonnee AItempRandomShot=new Coordonnee();		
+			
+		//if (getEtatPartie()==EtatPartieType.tourJoueurAI){
+
+			
+		///} else if (this.getEtatPartie()==EtatPartieType.tourJoueurH) /*{*/
+		// tour du joueur humain	
+		do {
+			action.setNomJoeur(joueurH.getNom());			
+			temp.setTouche(joueurAI.verifierShot(temp));
+			if (temp.isTouche()) {
+				joueurAI.getGrillePrincipale().setCaseStatut(temp.getLigne(), temp.getCol(), StatutCaseType.TOUCHE);
+				joueurH.getGrilleAdverse().setCaseStatut(temp.getLigne(), temp.getCol(), StatutCaseType.TOUCHE);
+				joueurH.ajouteUnTotalPoints();
+				joueurAI.getNavire(joueurAI.getGrillePrincipale().getNomNavire(temp.getLigne(), temp.getCol())).retirerUnNbPoints();
+			} else {
+				joueurAI.getGrillePrincipale().setCaseStatut(temp.getLigne(), temp.getCol(), StatutCaseType.DEMANDENONTOUCHE);
+				joueurH.getGrilleAdverse().setCaseStatut(temp.getLigne(), temp.getCol(), StatutCaseType.DEMANDENONTOUCHE);
+			}
+			action.setPoint(temp);
+			listFIFOAction.add(action);
+			
+			afficheTouteLesGrilles();
+		}while(temp.isTouche()&& !verifierVictoire());
 		
+		do {
+			action.setNomJoeur(joueurAI.getNom());
+			AItempRandomShot=joueurAI.RandomShots();
+			AItempRandomShot.setTouche(joueurH.verifierShot(AItempRandomShot));
+			this.setEtatPartie(EtatPartieType.tourJoueurH);
+			action.setPoint(AItempRandomShot);
+			listFIFOAction.add(action);
+
+			afficheTouteLesGrilles();
+		}while(AItempRandomShot.isTouche()&& !verifierVictoire());
 		
+		//}
+		
+		//return temp;
+		
+		// TODO Auto-generated constructor stub
+
+	}
+	
+	public Coordonnee executerTourbackup(Coordonnee temp) {
+		
+		Action action=new Action();
+			
 		if (getEtatPartie()==EtatPartieType.tourJoueurAI){
 			action.setNomJoeur(joueurAI.getNom());
 			temp=joueurAI.RandomShots();
@@ -186,6 +240,13 @@ public class Partie {
 		this.niveau = niveau;
 	}
 
+	/**
+	 * @return the scorepourvictoire
+	 */
+	public static int getScorepourvictoire() {
+		return scorePourVictoire;
+	}
+	
 	public boolean sauvegardePartie(String path, String nomFichier) {
 				
 		 return SauvegardeXML.sauvegardeXML(this, path, nomFichier);
