@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +18,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import jeu.Partie;
 
 /**
  *
@@ -24,23 +25,8 @@ import jeu.Partie;
  */
 public class MainAppController implements Initializable {
     
-    public Partie partie;
-    public String nom;
-    public String difficulte;
-    
-    public void setPartie(Partie p) {
-        partie = p;
-    }
-    
-    public void setNom(String s) {
-        this.nom = s;
-    }
-    
-    public void setDifficulte(String s) {
-        this.difficulte = s;
-        btnRecommencerPartie.setDisable(false);
-    }
-    
+    public static String nom;
+    public static String difficulte;
     @FXML
     private Pane ecranCentre;
     
@@ -49,12 +35,7 @@ public class MainAppController implements Initializable {
     
     @FXML
     private void handleBtnNouvellePartie(ActionEvent event) throws Exception {
-        ecranCentre.getChildren().clear();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/NouvellePartie.fxml"));
-        ecranCentre.getChildren().add(loader.load());
-        NouvellePartieControlleur nouvellePartieControlleur = loader.<NouvellePartieControlleur>getController();
-        nouvellePartieControlleur.initData(this);
-        
+        nouvellePartie();
     }
     
     @FXML
@@ -65,7 +46,7 @@ public class MainAppController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Partie.fxml"));
         ecranCentre.getChildren().add(loader.load());
         PartieControlleur controlleur = loader.<PartieControlleur>getController();
-        controlleur.initData(this.nom, this.difficulte);
+        //controlleur.initRecommencer(this.getPartie());
     }
     
     @FXML
@@ -75,12 +56,14 @@ public class MainAppController implements Initializable {
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
         fileChooser.getExtensionFilters().add(extFilter);
         File fichier = fileChooser.showOpenDialog(new Stage());
-        System.out.println(fichier); //TRACE
+        if(fichier != null) {
+            ecranCentre.getChildren().clear();
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Partie.fxml"));
-        ecranCentre.getChildren().add(loader.load());
-        PartieControlleur controlleur = loader.<PartieControlleur>getController();
-        controlleur.initDataChargement(fichier);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Partie.fxml"));
+            ecranCentre.getChildren().add(loader.load());
+            PartieControlleur controlleur = loader.<PartieControlleur>getController();
+            controlleur.initDataChargement(fichier);
+        }
         
     }
     
@@ -117,11 +100,39 @@ public class MainAppController implements Initializable {
             Platform.exit();
         }
     }
+    
+    private void nouvellePartie() throws Exception{
+        ecranCentre.getChildren().clear();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/NouvellePartie.fxml"));
+        ecranCentre.getChildren().add(loader.load());
+        NouvellePartieControlleur nouvellePartieControlleur = loader.<NouvellePartieControlleur>getController();
+        
+        
+        final ChangeListener changeListener = (ChangeListener) (ObservableValue observableValue, Object oldValue, Object newValue) -> {
+                   btnRecommencerPartie.setText("ABCD");
+                   btnRecommencerPartie.setDisable(false);
+                   ecranCentre.getChildren().clear();
+                }; 
+        //StaticPartie.setNom("");
+        StaticPartie.stringProperty().addListener(changeListener);
+    }
+    
+    public void btna() {
+         btnRecommencerPartie.setText("ABCD");
+         btnRecommencerPartie.setDisable(false);
+         ecranCentre.getChildren().clear();
+    }
 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        try
+        {
+        nouvellePartie();
+        } catch(Exception e) {
+            System.out.println("MainAppController initialize " + e.getMessage());
+        }
     }    
     
 }

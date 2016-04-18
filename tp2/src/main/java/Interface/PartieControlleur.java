@@ -94,6 +94,7 @@ public class PartieControlleur implements Initializable{
         this.difficulte = difficulte;
         
         partie = new Partie(nom,NiveauPartieType.valueOf(difficulte));
+        StaticPartie.setNom(nom);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Grille.fxml"));
         grilleGauche.getChildren().add(loader.load());    
@@ -102,8 +103,6 @@ public class PartieControlleur implements Initializable{
     }
     
     public void initRecommencer(Partie partie) throws Exception {
-        //partie.initialiser();
-        //this.partie = partie;
         this.nom = partie.getJoueurH().getNom();
         this.difficulte = partie.getNiveau().name();
         this.partie = new Partie(this.nom,NiveauPartieType.valueOf(this.difficulte));
@@ -116,8 +115,7 @@ public class PartieControlleur implements Initializable{
     
     public void initDataChargement(File fichier) throws Exception {
         
-        //partie = new Partie(nom,NiveauPartieType.valueOf(difficulte)); 
-        //CHARGEMENT
+        partie = new Partie(); 
         partie.chargement(fichier.getPath(), fichier.getName());
         
         this.nom = partie.getJoueurH().getNom();
