@@ -5,8 +5,6 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,8 +23,6 @@ import javafx.stage.Stage;
  */
 public class MainAppController implements Initializable {
     
-    public static String nom;
-    public static String difficulte;
     @FXML
     private Pane ecranCentre;
     
@@ -41,12 +37,15 @@ public class MainAppController implements Initializable {
     @FXML
     private void handleBtnRecommencerPartie(ActionEvent event) throws Exception {
         
-        ecranCentre.getChildren().clear();
+        if(StaticPartie.getPartie() != null)
+        {
+            ecranCentre.getChildren().clear();
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Partie.fxml"));
-        ecranCentre.getChildren().add(loader.load());
-        PartieControlleur controlleur = loader.<PartieControlleur>getController();
-        //controlleur.initRecommencer(this.getPartie());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Partie.fxml"));
+            ecranCentre.getChildren().add(loader.load());
+            PartieControlleur controlleur = loader.<PartieControlleur>getController();
+            controlleur.initRecommencer();
+        }
     }
     
     @FXML
@@ -56,6 +55,7 @@ public class MainAppController implements Initializable {
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
         fileChooser.getExtensionFilters().add(extFilter);
         File fichier = fileChooser.showOpenDialog(new Stage());
+        
         if(fichier != null) {
             ecranCentre.getChildren().clear();
         
@@ -69,13 +69,29 @@ public class MainAppController implements Initializable {
     
     @FXML
     private void handleBtnSauvegarder(ActionEvent event) throws Exception {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Sauvegarder Partie");
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
-        fileChooser.getExtensionFilters().add(extFilter);
-        File fichier = fileChooser.showSaveDialog(new Stage());
-        System.out.println(fichier); //TRACE
-        //TODO SAUVEGARDE DE FICHIER
+        if(StaticPartie.getPartie() != null) {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Sauvegarder Partie");
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
+            fileChooser.getExtensionFilters().add(extFilter);
+            File fichier = fileChooser.showSaveDialog(new Stage());
+        
+            if(fichier != null) {
+            
+                StaticPartie.getPartie().sauvegardePartie(fichier.getPath(), fichier.getName());
+                Alert alert = new Alert(AlertType.INFORMATION);
+        
+                alert.setTitle("Fichier Sauvegardé");
+                String s = "Le fichier " + fichier.getName() + " a bien été sauvegardé dans " + fichier.getPath();
+                alert.setContentText(s);
+
+                Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK){
+            
+                }
+            }
+        }
+        
     }
     
     @FXML
@@ -106,15 +122,16 @@ public class MainAppController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/NouvellePartie.fxml"));
         ecranCentre.getChildren().add(loader.load());
         NouvellePartieControlleur nouvellePartieControlleur = loader.<NouvellePartieControlleur>getController();
-        
-        
-        final ChangeListener changeListener = (ChangeListener) (ObservableValue observableValue, Object oldValue, Object newValue) -> {
-                   btnRecommencerPartie.setText("ABCD");
-                   btnRecommencerPartie.setDisable(false);
-                   ecranCentre.getChildren().clear();
-                }; 
-        //StaticPartie.setNom("");
-        StaticPartie.stringProperty().addListener(changeListener);
+
+        /*StaticPartie.partieProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
+                change();
+            }
+        });*/
+    }
+    public void change() {
+        System.out.println("CHANGELISTENER");
     }
     
     public void btna() {
@@ -129,7 +146,8 @@ public class MainAppController implements Initializable {
         // TODO
         try
         {
-        nouvellePartie();
+            //StaticPartie s = new StaticPartie();
+            nouvellePartie();
         } catch(Exception e) {
             System.out.println("MainAppController initialize " + e.getMessage());
         }

@@ -18,9 +18,7 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -162,9 +160,9 @@ public class GrilleControlleur implements Initializable{
         
     }    
     
-    public void initialiserGrilleGauche(PartieControlleur partieControlleur) {
+    public void initialiserGrilleGauche() {
         
-        HashMap<Integer, ArrayList<Case>> cases = partieControlleur.partie.getJoueurH().getGrillePrincipale().getCases();
+        HashMap<Integer, ArrayList<Case>> cases = StaticPartie.getPartie().getJoueurH().getGrillePrincipale().getCases();
         
         for(int i = 1; i < 11; i++) {
             for (int j = 1; j < 11; j++) {
@@ -236,9 +234,9 @@ public class GrilleControlleur implements Initializable{
         }
     }
     
-    public void initialiserGrilleDroite(PartieControlleur partieControlleur) {
+    public void initialiserGrilleDroite() {
         
-        HashMap<Integer, ArrayList<Case>> cases = partieControlleur.partie.getJoueurH().getGrilleAdverse().getCases();
+        HashMap<Integer, ArrayList<Case>> cases = StaticPartie.getPartie().getJoueurH().getGrilleAdverse().getCases();
         
         for(int i = 1; i < 11; i++) {
             for (int j = 1; j < 11; j++) {
