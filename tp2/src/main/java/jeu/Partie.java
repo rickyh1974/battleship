@@ -250,9 +250,9 @@ public class Partie {
 		return scorePourVictoire;
 	}
 	
-	public boolean sauvegardePartie(String path, String nomFichier) {
+	public void sauvegardePartie(String path) {
 				
-		 return SauvegardeXML.sauvegardeXML(this, path, nomFichier);
+		  SauvegardeXML.sauvegardeXML(this, path);
 		 
 	}
 	public Partie chargement( String path, String nomFichier) {

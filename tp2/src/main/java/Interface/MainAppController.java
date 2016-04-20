@@ -78,7 +78,7 @@ public class MainAppController implements Initializable {
         
             if(fichier != null) {
             
-                StaticPartie.getPartie().sauvegardePartie(fichier.getPath(), fichier.getName());
+                StaticPartie.getPartie().sauvegardePartie(fichier.getPath());
                 Alert alert = new Alert(AlertType.INFORMATION);
         
                 alert.setTitle("Fichier Sauvegardé");

@@ -8,6 +8,7 @@ package jeu;
 //import java.util.ArrayList;
 //import AI.JoueurAI;
 //import SauvegardeChargement.SauvegardeXML; ;
+import Interface.Tuile;
 
 public class test {
 
@@ -18,6 +19,7 @@ public class test {
 		
 		//JoueurAI joueurAI = new JoueurAI();
 		//Joueur joueur = new Joueur("Ricky");
+		Tuile tuile = new Tuile();
 		Partie partie = new Partie("ricky", NiveauPartieType.FACILE);
 		Partie partie1= null;
 		Coordonnee temp;
