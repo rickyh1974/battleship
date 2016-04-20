@@ -8,8 +8,10 @@ import java.util.LinkedList;
 
 
 import AI.JoueurAI;
-import SauvegardeChargement.SauvegardeXML;
 import SauvegardeChargement.ChargementXML;
+import SauvegardeChargement.SauvegardeXML;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 /**
  * @author DELL
  *
@@ -23,6 +25,17 @@ public class Partie {
     private JoueurAI joueurAI;
     private Joueur joueurH;
     private static final int scorePourVictoire=17;
+    
+    private BooleanProperty estFinPartie = new SimpleBooleanProperty();
+    public BooleanProperty estFinPartieProperty() {
+        return estFinPartie;
+    }/*
+    private Boolean getEstFinPartie() {
+        return estFinPartie.get();
+    }
+    private void setEstFinPartie(Boolean b) {
+        estFinPartie.set(b);
+    }*/
     
     public Partie() {
     	// serialization xml convention java beans
@@ -70,7 +83,14 @@ public class Partie {
 	
 	public Boolean verifierVictoire() {
 		
-		return joueurAI.getTotalPoints()==scorePourVictoire||joueurH.getTotalPoints()==scorePourVictoire;
+            if(joueurAI.getTotalPoints()==scorePourVictoire||joueurH.getTotalPoints()==scorePourVictoire) {
+                estFinPartie.set(Boolean.TRUE);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 		// TODO Auto-generated constructor stub
 	}
 	

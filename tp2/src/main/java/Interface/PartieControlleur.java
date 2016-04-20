@@ -3,14 +3,19 @@ package Interface;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -24,6 +29,7 @@ public class PartieControlleur implements Initializable{
     private String nom;
     private String difficulte;
     private Partie partie;
+    //private BooleanProperty estFinPartie = new SimpleBooleanProperty();
     
     @FXML
     private Pane grilleGauche;
@@ -66,8 +72,21 @@ public class PartieControlleur implements Initializable{
             int col = ((Coordonnee)newValue).getCol();
             StaticPartie.getPartie().executerTour(new Coordonnee(ligne,col));
         };
-        
         controller2.coordonneeProperty.addListener(changeListener);
+        
+        //this.estFinPartie.bind(StaticPartie.getPartie().estFinPartieProperty());
+        final ChangeListener changeListener2 = (ChangeListener) (ObservableValue observableValue, Object oldValue, Object newValue) -> {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        
+                alert.setTitle("Partie terminée");
+                String s = "La partie est terminée";
+                alert.setContentText(s);
+
+                Optional<ButtonType> result = alert.showAndWait();
+                
+        };
+        
+        StaticPartie.getPartie().estFinPartieProperty().addListener(changeListener2);
     }
 
     
@@ -91,7 +110,8 @@ public class PartieControlleur implements Initializable{
     
     public void initRecommencer() throws Exception {
         this.nom = StaticPartie.getPartie().getJoueurH().getNom();
-        this.difficulte = StaticPartie.getPartie().getNiveau().name();        StaticPartie.setPartie(new Partie(this.nom,NiveauPartieType.valueOf(this.difficulte)));
+        this.difficulte = StaticPartie.getPartie().getNiveau().name();        
+        StaticPartie.setPartie(new Partie(this.nom,NiveauPartieType.valueOf(this.difficulte)));
         
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Grille.fxml"));
