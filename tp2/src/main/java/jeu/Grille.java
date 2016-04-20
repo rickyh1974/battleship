@@ -111,7 +111,7 @@ public class Grille {
 		for( int j=0;j<10;j++){
 			System.out.print(j);
 		   for(int i=0;i<10;i++){			  
-			  System.out.print(this.cases.get(j).get(i).getStatutCase() );			
+			  System.out.print(this.cases.get(j).get(i).getStatutCase()+" " );			
 		   }
 		
 		   System.out.println();
