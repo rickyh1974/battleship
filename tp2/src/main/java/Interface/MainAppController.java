@@ -80,7 +80,7 @@ public class MainAppController implements Initializable {
             
                 try
                 {
-                    StaticPartie.getPartie().sauvegardePartie(fichier.getPath(), fichier.getName());
+                    StaticPartie.getPartie().sauvegardePartie(fichier.getPath());
                 }
                 catch(Exception e) {
                     Alert alert = new Alert(AlertType.ERROR);
