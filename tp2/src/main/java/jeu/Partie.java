@@ -94,7 +94,8 @@ public class Partie {
 	}
 	
 	public Boolean verifierVictoire() {
-		
+		    System.out.println("joueurAI.getTotalPoints="+joueurAI.getTotalPoints());
+		    System.out.println("joueurH.getTotalPoints="+joueurH.getTotalPoints());
             if(joueurAI.getTotalPoints()==scorePourVictoire||joueurH.getTotalPoints()==scorePourVictoire) {
                 estFinPartie.set(Boolean.TRUE);
                 return true;
@@ -154,12 +155,12 @@ public class Partie {
 				listFIFOAction.add(actionAI);
 
 				afficheTouteLesGrilles();
-			}while(AItempRandomShot.isTouche()&& !verifierVictoire());
+			}while(!verifierVictoire() && AItempRandomShot.isTouche() );
 
 		}
 		action.setPoint(temp);
 		listFIFOAction.add(action);
-		
+		verifierVictoire();
 		afficheTouteLesGrilles();
 		
 		
