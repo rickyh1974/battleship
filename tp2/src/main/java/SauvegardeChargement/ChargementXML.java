@@ -20,13 +20,13 @@ public class ChargementXML {
 	/**
 	 * 
 	 */
-	public static Partie chargementXML(String path, String nomFichier) {
+	public static Partie chargementXML(String path) {
 		
 		XMLDecoder decoder=null;
 		try {
-			decoder=new XMLDecoder(new BufferedInputStream(new FileInputStream(path+nomFichier)));
+			decoder=new XMLDecoder(new BufferedInputStream(new FileInputStream(path)));
 		} catch (FileNotFoundException e) {
-			System.out.println("ERROR: File dvd.xml not found");
+			System.out.println("ERROR: "+path);
 		}
 		Partie object=(Partie)decoder.readObject();
 		//System.out.println(object);

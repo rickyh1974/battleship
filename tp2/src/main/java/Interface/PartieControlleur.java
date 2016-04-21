@@ -148,7 +148,7 @@ public class PartieControlleur implements Initializable{
     public void initDataChargement(File fichier) throws Exception {
         
         Partie p = new Partie("",NiveauPartieType.FACILE);
-        StaticPartie.setPartie(p.chargement(fichier.getPath(), fichier.getName()));
+        StaticPartie.setPartie(p.chargement(fichier.getPath()));
         //StaticPartie.getPartie().chargement(fichiere.getPath(), fichier.getName());
         
         //StaticPartie.setPartie(new Partie(fichier));

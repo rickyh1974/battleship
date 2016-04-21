@@ -57,7 +57,7 @@ public class Partie {
 	}
         
         public Partie(File fichier) {
-            this.chargement(fichier.getPath(), fichier.getName());
+            this.chargement(fichier.getPath());
         }
 	
 	public void initialiser(){
@@ -287,9 +287,9 @@ public class Partie {
 		  SauvegardeXML.sauvegardeXML(this, path);
 		 
 	}
-	public Partie chargement( String path, String nomFichier) {
+	public Partie chargement( String path) {
 		
-		return ChargementXML.chargementXML( path, nomFichier);
+		return ChargementXML.chargementXML( path);
 	}
 	
 
