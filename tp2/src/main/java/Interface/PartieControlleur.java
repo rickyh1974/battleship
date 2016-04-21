@@ -92,8 +92,9 @@ public class PartieControlleur implements Initializable{
                     alert.setTitle("Partie terminée");
                     String s = "La partie est terminée";
                     alert.setContentText(s);
-
+                    grilleDroite.setDisable(true);
                     Optional<ButtonType> result = alert.showAndWait();
+                    
                 
             };
         
