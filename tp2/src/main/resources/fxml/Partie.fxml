@@ -25,6 +25,7 @@
          <children>
             <Button fx:id="btnCommencer" mnemonicParsing="false" onAction="#handleBtnCommencer" text="Commencer" />
             <Label fx:id="lblEnCours" text="Partie en cours..." textAlignment="CENTER" textFill="#807d7d" visible="false" />
+            <Label fx:id="lblErreurPlacement" text="Navires mal placés" textAlignment="CENTER" visible="false" />  
          </children>
       </VBox>
    </children>

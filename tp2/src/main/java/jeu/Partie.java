@@ -10,6 +10,9 @@ import java.util.LinkedList;
 import AI.JoueurAI;
 import SauvegardeChargement.ChargementXML;
 import SauvegardeChargement.SauvegardeXML;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 /**
@@ -52,6 +55,10 @@ public class Partie {
 		
 		// TODO Auto-generated constructor stub
 	}
+        
+        public Partie(File fichier) {
+            this.chargement(fichier.getPath(), fichier.getName());
+        }
 	
 	public void initialiser(){
 		// TODO Auto-generated constructor stub
@@ -67,6 +74,11 @@ public class Partie {
 		joueurAI.autoPlacerNavire();
 
 	}
+        
+        public void placerNaviresJoueurH(HashMap<NavireType, ArrayList<Coordonnee>> placementNavires) {
+            joueurH.setPlacementNavires(placementNavires);
+        }
+            
 	
 	public void reCommencerPartie() {
 		initialiser();

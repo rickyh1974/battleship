@@ -4,6 +4,7 @@
 package jeu;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -141,6 +142,10 @@ public class Joueur {
 	public void setNavires(HashMap<NavireType, Navire> navires) {
 		this.navires = navires;
 	}
+        
+        public void setPlacementNavires(HashMap<NavireType, ArrayList<Coordonnee>> placementNavires) {
+            //TODO
+        }
 
 	/**
 	 * @return the nBR_NAVIRE

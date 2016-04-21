@@ -22,6 +22,8 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import jeu.Case;
 import jeu.Coordonnee;
 import jeu.StatutCaseType;
@@ -126,10 +128,12 @@ public class GrilleControlleur implements Initializable{
     
     private void handleMouseClick(MouseEvent mouseEvent) {
         Tuile source = (Tuile)mouseEvent.getSource();
-        Integer col = grille.getColumnIndex(source)-1;
-        Integer row = grille.getRowIndex(source)-1;
-        coordonneeProperty.set(new Coordonnee(col,row));
-        (source.getScene()).setCursor(Cursor.DEFAULT);
+        if(!source.estTouche) {
+            Integer row = grille.getRowIndex(source)-1;
+            Integer col = grille.getColumnIndex(source)-1;
+            coordonneeProperty.set(new Coordonnee(row,col));
+            (source.getScene()).setCursor(Cursor.DEFAULT);
+        }
     }
     
     private void onMouseEnteredRectangleCursor(MouseEvent mouseEvent) {
@@ -169,36 +173,9 @@ public class GrilleControlleur implements Initializable{
                 
                 Tuile tuile = new Tuile();
                 tuile.setId("tuileC"+i+"R"+j);
-
-                Rectangle rectangle = null;
-                if(i<4 && j < 6) {
-                    
-                    tuile.occuper();
-                    
-                    rectangle = new Rectangle(25,25);
-                    rectangle.setOnDragDetected((MouseEvent mouseEvent) -> {
-                        onDragDetected(mouseEvent);
-                    });
-                    
-                    rectangle.setOnDragDone((DragEvent dragEvent) -> {
-                        onDragDone(dragEvent);
-                    });
-                }
-
                 
                 StackPane stackPane = new StackPane();
                 stackPane.getChildren().add(tuile);
-                if(rectangle != null) {
-                    stackPane.getChildren().add(rectangle);
-                    
-                    rectangle.setOnMouseEntered((MouseEvent mouseEvent) -> {
-                        onMouseEnteredRectangleCursor(mouseEvent);
-                    });
-                    rectangle.setOnMouseExited((MouseEvent mouseEvent) -> {
-                        onMouseExitedRectangleCursor(mouseEvent);
-                    });
-                    
-                }
                 
                 stackPane.setOnDragEntered((DragEvent dragEvent) -> {
                     onDragEntered(dragEvent);
@@ -224,25 +201,64 @@ public class GrilleControlleur implements Initializable{
                     }
                 };
                 
-                cases.get(i-1).get(j-1).statutCaseProperty().addListener(changeListener);
+                cases.get(j-1).get(i-1).statutCaseProperty().addListener(changeListener);
                 
-                GridPane.setConstraints(stackPane, i, j);
+                GridPane.setConstraints(stackPane, j, i);
                 GridPane.setHalignment(stackPane, HPos.CENTER);
                 GridPane.setValignment(stackPane, VPos.CENTER);
-                grille.add(stackPane, i, j);
+                grille.add(stackPane, j, i);
             }
         }
+        
+        
+        
+    }
+    
+    public void initialiserNavires() {
+        
+            Rectangle rectangle = creerRectangle();  
+            
+            ObservableList<Node> childrens = grille.getChildren();
+            for(Node node : childrens) {
+                if(node.toString().contains("StackPane")) {
+                    if(grille.getRowIndex(node) == 2 && grille.getColumnIndex(node) == 2) {
+                        ((StackPane)node).getChildren().add(rectangle);
+                        System.out.println(node.toString()); //TRACE
+                        break;
+                    }
+                }
+            }         
+    }
+    private Rectangle creerRectangle() {
+        Rectangle rectangle = new Rectangle(50,50);
+        
+        rectangle.setOnDragDetected((MouseEvent mouseEvent) -> {
+           onDragDetected(mouseEvent);
+        });
+                    
+        rectangle.setOnDragDone((DragEvent dragEvent) -> {
+            onDragDone(dragEvent);
+        });
+                 
+        rectangle.setOnMouseEntered((MouseEvent mouseEvent) -> {
+            onMouseEnteredRectangleCursor(mouseEvent);
+        });
+        rectangle.setOnMouseExited((MouseEvent mouseEvent) -> {
+            onMouseExitedRectangleCursor(mouseEvent);
+        });
+            
+        return rectangle;
     }
     
     public void initialiserGrilleDroite() {
         
         HashMap<Integer, ArrayList<Case>> cases = StaticPartie.getPartie().getJoueurH().getGrilleAdverse().getCases();
         
-        for(int i = 1; i < 11; i++) {
-            for (int j = 1; j < 11; j++) {
+        for(int ligne = 1; ligne < 11; ligne++) {
+            for (int col = 1; col < 11; col++) {
                 
                 Tuile tuile = new Tuile();
-                tuile.setId("tuileC"+i+"R"+j);
+                tuile.setId("tuileC"+ligne+"R"+col);
                 tuile.setOnMouseClicked((MouseEvent mouseEvent) -> {
                     handleMouseClick(mouseEvent);
                 });
@@ -267,12 +283,12 @@ public class GrilleControlleur implements Initializable{
                     }
                 };
                 
-                cases.get(i-1).get(j-1).statutCaseProperty().addListener(changeListener);
+                cases.get(ligne-1).get(col-1).statutCaseProperty().addListener(changeListener);
         
-                GridPane.setConstraints(tuile, i, j);
+                GridPane.setConstraints(tuile, col, ligne);
                 GridPane.setHalignment(tuile, HPos.CENTER);
                 GridPane.setValignment(tuile, VPos.CENTER);
-                grille.add(tuile, i, j);
+                grille.add(tuile, col, ligne);
             }
         }
     }

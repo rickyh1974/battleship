@@ -81,6 +81,13 @@ public class MainAppController implements Initializable {
                 try
                 {
                     StaticPartie.getPartie().sauvegardePartie(fichier.getPath());
+                    Alert alert = new Alert(AlertType.INFORMATION);
+        
+                    alert.setTitle("Fichier Sauvegardé");
+                    String s = "Le fichier " + fichier.getName() + " a bien été sauvegardé dans " + fichier.getPath();
+                    alert.setContentText(s);
+
+                    Optional<ButtonType> result = alert.showAndWait();
                 }
                 catch(Exception e) {
                     Alert alert = new Alert(AlertType.ERROR);
@@ -92,13 +99,7 @@ public class MainAppController implements Initializable {
                     Optional<ButtonType> result = alert.showAndWait();
                     event.consume();
                 }
-                Alert alert = new Alert(AlertType.INFORMATION);
-        
-                alert.setTitle("Fichier Sauvegardé");
-                String s = "Le fichier " + fichier.getName() + " a bien été sauvegardé dans " + fichier.getPath();
-                alert.setContentText(s);
-
-                Optional<ButtonType> result = alert.showAndWait();
+                
                 
             }
         }
