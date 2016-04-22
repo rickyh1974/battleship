@@ -127,8 +127,6 @@ public class PartieControlleur implements Initializable{
         ArrayList<Coordonnee> coord = placementNavires.get(navireType);
         Coordonnee precedente = coord.get(0);
         for(Coordonnee c : coord) {
-            System.out.println("c : " + c.getCol());
-            System.out.println("p : " + precedente.getCol());
             if(c.getCol() > (precedente.getCol()+1) || c.getCol() < (precedente.getCol()-1))
                 return false;
             if(c.getCol() == precedente.getCol() && c.getLigne() > (precedente.getLigne()+1))
