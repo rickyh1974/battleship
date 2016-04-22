@@ -126,6 +126,8 @@ public class PartieControlleur implements Initializable{
     private boolean validationCoordonnees(NavireType navireType) {
         ArrayList<Coordonnee> coord = placementNavires.get(navireType);
         Coordonnee precedente = coord.get(0);
+        boolean estHorizontal = false;
+        boolean estVertical = false;
         for(Coordonnee c : coord) {
             if(c.getCol() > (precedente.getCol()+1) || c.getCol() < (precedente.getCol()-1))
                 return false;
@@ -138,6 +140,14 @@ public class PartieControlleur implements Initializable{
             if(c.getCol() == (precedente.getCol()+1) && c.getLigne() <= (precedente.getLigne()-1))
                 return false;
             if(c.getCol() == (precedente.getCol()-1) && c.getLigne() >= (precedente.getLigne()+1))
+                return false;
+            
+            if(c.getLigne() == precedente.getLigne() && c.getCol() != precedente.getCol())
+                estHorizontal = true;
+            if(c.getCol() == precedente.getCol() && c.getLigne() != precedente.getLigne())
+                estVertical = true;
+                
+            if(estHorizontal==true && estVertical == true)
                 return false;
             
             precedente = c;
