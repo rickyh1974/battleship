@@ -24,8 +24,10 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
+import javafx.scene.paint.Color;
 import jeu.Case;
 import jeu.Coordonnee;
+import jeu.NavireType;
 import jeu.StatutCaseType;
 
 public class GrilleControlleur implements Initializable{
@@ -34,6 +36,7 @@ public class GrilleControlleur implements Initializable{
     
     @FXML
     private GridPane grille;
+    
     
     @FXML
     protected void onDragDetected(MouseEvent event) {
@@ -216,21 +219,46 @@ public class GrilleControlleur implements Initializable{
     
     public void initialiserNavires() {
         
-            Rectangle rectangle = creerRectangle();  
+            Rectangle rectangle; 
             
             ObservableList<Node> childrens = grille.getChildren();
             for(Node node : childrens) {
                 if(node.toString().contains("StackPane")) {
-                    if(grille.getRowIndex(node) == 2 && grille.getColumnIndex(node) == 2) {
+                    if(grille.getRowIndex(node) == 1 && grille.getColumnIndex(node) <= 5) {
+                        rectangle   = creerRectangle();
+                        rectangle.setId(NavireType.PORTEAVIONS.toString());
+                        rectangle.setFill(Color.DARKSLATEBLUE);
                         ((StackPane)node).getChildren().add(rectangle);
-                        System.out.println(node.toString()); //TRACE
-                        break;
+                    }
+                    if(grille.getRowIndex(node) == 2 && grille.getColumnIndex(node) <= 4) {
+                        rectangle   = creerRectangle();
+                        rectangle.setId(NavireType.CROISSEUR.toString());
+                        rectangle.setFill(Color.DARKSLATEGRAY);
+                        ((StackPane)node).getChildren().add(rectangle);
+                    }
+                    if(grille.getRowIndex(node) == 3 && grille.getColumnIndex(node) <= 3) {
+                        rectangle   = creerRectangle();
+                        rectangle.setId(NavireType.CONTRETORPILLEUR.toString());
+                        rectangle.setFill(Color.DARKOLIVEGREEN);
+                        ((StackPane)node).getChildren().add(rectangle);
+                    }
+                    if(grille.getRowIndex(node) == 4 && grille.getColumnIndex(node) <= 3) {
+                        rectangle   = creerRectangle();
+                        rectangle.setId(NavireType.SOUSMARIN.toString());
+                        rectangle.setFill(Color.DARKGOLDENROD);
+                        ((StackPane)node).getChildren().add(rectangle);
+                    }
+                    if(grille.getRowIndex(node) == 5 && grille.getColumnIndex(node) <= 2) {
+                        rectangle   = creerRectangle();
+                        rectangle.setId(NavireType.TORPILLEUR.toString());
+                        rectangle.setFill(Color.DARKORCHID);
+                        ((StackPane)node).getChildren().add(rectangle);
                     }
                 }
             }         
     }
     private Rectangle creerRectangle() {
-        Rectangle rectangle = new Rectangle(50,50);
+        Rectangle rectangle = new Rectangle(25,25);
         
         rectangle.setOnDragDetected((MouseEvent mouseEvent) -> {
            onDragDetected(mouseEvent);
@@ -248,6 +276,30 @@ public class GrilleControlleur implements Initializable{
         });
             
         return rectangle;
+    }
+    
+    public HashMap<NavireType, ArrayList<Coordonnee>> placerNavires() {
+        HashMap<NavireType, ArrayList<Coordonnee>> placementNavires = new HashMap<>();
+        
+        ObservableList<Node> childrens = grille.getChildren();
+        for(Node node : childrens) {
+            if(node.toString().contains("StackPane")) {
+                ObservableList<Node> stackPaneChildrens = ((StackPane)node).getChildren();
+                if(stackPaneChildrens.size()==2) {
+                    Rectangle rectNavire = (Rectangle)stackPaneChildrens.get(1);
+                    Integer row = grille.getRowIndex(node)-1;
+                    Integer col = grille.getColumnIndex(node)-1;
+                    
+                    if(!placementNavires.containsKey(NavireType.valueOf(rectNavire.getId())))
+                        placementNavires.put(NavireType.valueOf(rectNavire.getId()), new ArrayList<>());
+
+                    placementNavires.get(NavireType.valueOf(rectNavire.getId())).add(new Coordonnee(col,row));
+                }
+            }
+        }      
+        
+        return placementNavires;
+        
     }
     
     public void initialiserGrilleDroite() {
@@ -284,6 +336,13 @@ public class GrilleControlleur implements Initializable{
                 };
                 
                 cases.get(ligne-1).get(col-1).statutCaseProperty().addListener(changeListener);
+                
+                //cases.get(ligne-1).get(col-1).setStatutCase(cases.get(ligne-1).get(col-1).getStatutCase());
+                //if(cases.get(ligne-1).get(col-1).statutCaseProperty().equals(StatutCaseType.DEMANDENONTOUCHE)) {
+                  //  cases.get(ligne-1).get(col-1).setStatutCase(StatutCaseType.DEMANDENONTOUCHE);
+                //}
+                
+            
         
                 GridPane.setConstraints(tuile, col, ligne);
                 GridPane.setHalignment(tuile, HPos.CENTER);
@@ -291,6 +350,8 @@ public class GrilleControlleur implements Initializable{
                 grille.add(tuile, col, ligne);
             }
         }
+        
+        
     }
     
    

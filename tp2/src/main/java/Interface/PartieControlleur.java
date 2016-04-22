@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -31,7 +32,6 @@ public class PartieControlleur implements Initializable{
     private String nom;
     private String difficulte;
     private Partie partie;
-    //private BooleanProperty estFinPartie = new SimpleBooleanProperty();
     HashMap<NavireType, ArrayList<Coordonnee>> placementNavires = new HashMap<>();
     
     @FXML
@@ -57,6 +57,8 @@ public class PartieControlleur implements Initializable{
     
     @FXML
     private Label lblErreurPlacement;
+    
+    private GrilleControlleur grilleGaucheControlleur;
     
     @FXML
     private void handleBtnCommencer(ActionEvent event) throws Exception {
@@ -107,9 +109,40 @@ public class PartieControlleur implements Initializable{
     
     private boolean validerPlacementNavires() {
         
+        placementNavires = grilleGaucheControlleur.placerNavires();
+        
+        if(!validationCoordonnees(NavireType.PORTEAVIONS) 
+                || !validationCoordonnees(NavireType.CROISSEUR)
+                || !validationCoordonnees(NavireType.CONTRETORPILLEUR)
+                || !validationCoordonnees(NavireType.SOUSMARIN)
+                || !validationCoordonnees(NavireType.TORPILLEUR))
+            return false;
         
         
-        
+        return true;
+    }
+    
+    private boolean validationCoordonnees(NavireType navireType) {
+        ArrayList<Coordonnee> coord = placementNavires.get(navireType);
+        Coordonnee precedente = coord.get(0);
+        for(Coordonnee c : coord) {
+            System.out.println("c : " + c.getCol());
+            System.out.println("p : " + precedente.getCol());
+            if(c.getCol() > (precedente.getCol()+1) || c.getCol() < (precedente.getCol()-1))
+                return false;
+            if(c.getCol() == precedente.getCol() && c.getLigne() > (precedente.getLigne()+1))
+                return false;
+            if(c.getCol() == (precedente.getCol()+1) && c.getLigne() >= (precedente.getLigne()+1))
+                return false;
+            if(c.getCol() == (precedente.getCol()-1) && c.getLigne() <= (precedente.getLigne()-1))
+                return false;
+            if(c.getCol() == (precedente.getCol()+1) && c.getLigne() <= (precedente.getLigne()-1))
+                return false;
+            if(c.getCol() == (precedente.getCol()-1) && c.getLigne() >= (precedente.getLigne()+1))
+                return false;
+            
+            precedente = c;
+        }
         return true;
     }
 
@@ -128,9 +161,9 @@ public class PartieControlleur implements Initializable{
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Grille.fxml"));
         grilleGauche.getChildren().add(loader.load());    
-        GrilleControlleur controller = loader.<GrilleControlleur>getController();
-        controller.initialiserGrilleGauche();
-        controller.initialiserNavires();
+        grilleGaucheControlleur = loader.<GrilleControlleur>getController();
+        grilleGaucheControlleur.initialiserGrilleGauche();
+        grilleGaucheControlleur.initialiserNavires();
     }
     
     public void initRecommencer() throws Exception {
@@ -141,14 +174,16 @@ public class PartieControlleur implements Initializable{
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Grille.fxml"));
         grilleGauche.getChildren().add(loader.load());
-        GrilleControlleur controller = loader.<GrilleControlleur>getController();
-        controller.initialiserGrilleGauche();
+        grilleGaucheControlleur = loader.<GrilleControlleur>getController();
+        grilleGaucheControlleur.initialiserGrilleGauche();
+        grilleGaucheControlleur.initialiserNavires();
     }
     
     public void initDataChargement(File fichier) throws Exception {
         
         Partie p = new Partie("",NiveauPartieType.FACILE);
         StaticPartie.setPartie(p.chargement(fichier.getPath()));
+        //StaticPartie.setPartie(new Partie("abcd",NiveauPartieType.FACILE));
         //StaticPartie.getPartie().chargement(fichiere.getPath(), fichier.getName());
         
         //StaticPartie.setPartie(new Partie(fichier));
@@ -157,8 +192,8 @@ public class PartieControlleur implements Initializable{
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Grille.fxml"));
         grilleGauche.getChildren().add(loader.load());    
-        GrilleControlleur controller = loader.<GrilleControlleur>getController();
-        controller.initialiserGrilleGauche();
+        grilleGaucheControlleur = loader.<GrilleControlleur>getController();
+        grilleGaucheControlleur.initialiserGrilleGauche();
     }
     
     
