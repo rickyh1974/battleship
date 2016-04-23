@@ -32,13 +32,11 @@ public class Partie {
     private BooleanProperty estFinPartie = new SimpleBooleanProperty();
     public BooleanProperty estFinPartieProperty() {
         return estFinPartie;
-    }/*
-    private Boolean getEstFinPartie() {
+    }
+   
+    public Boolean getEstFinPartie() {
         return estFinPartie.get();
     }
-    private void setEstFinPartie(Boolean b) {
-        estFinPartie.set(b);
-    }*/
     
     public Partie() {
     	// serialization xml convention java beans

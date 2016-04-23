@@ -4,6 +4,8 @@ package Interface;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 import jeu.Action;
 
 public class VisualiserControlleur implements Initializable{
@@ -23,6 +26,9 @@ public class VisualiserControlleur implements Initializable{
     
     @FXML
     private Button btnVisualiser;
+    
+    @FXML
+    private Button btnReVisualiser;
     
     @FXML
     private Label lblEnCours;
@@ -38,23 +44,56 @@ public class VisualiserControlleur implements Initializable{
     
         btnVisualiser.setDisable(true);
         lblEnCours.setVisible(true);
-        
     
-        LinkedList<Action> listFIFOAction = StaticPartie.getPartie().getListFIFOAction();
-        for(Action action : listFIFOAction)  {
-            if(action.getNomJoeur().equals("JoueurAI")) {
-                grilleGaucheControlleur.setAction(action);
-            }
-            else {
-                grilleDroiteControlleur.setAction(action);
-            }
-                
-            
-            System.out.println(action.getNomJoeur());
-            System.out.println(action.getPoint().toString());
-        }
+        visualiser();
     }
     
+    @FXML
+    private void handleBtnReVisualiser(ActionEvent event) throws Exception {
+        grilleGaucheControlleur.initialiserGrilleGauche();
+        grilleGaucheControlleur.chargerNavires();
+        grilleDroiteControlleur.initialiserGrilleDroite();
+        
+        btnReVisualiser.setDisable(true);
+        lblEnCours.setVisible(true);
+        visualiser();
+    }
+    
+    private void visualiser() {
+        LinkedList<Action> listFIFOAction = StaticPartie.getPartie().getListFIFOAction();
+        LinkedList<Action> copie = new LinkedList<>();
+        int size = listFIFOAction.size();
+        
+        Timeline timeline = new Timeline(
+            new KeyFrame(Duration.millis(600), e -> {
+
+                if(!listFIFOAction.isEmpty()) {
+                    Action action = listFIFOAction.remove(0);
+                    copie.add(action);
+                    if(action.getNomJoeur().equals("JoueurAI")) {
+                    grilleGaucheControlleur.setAction(action);
+                    }
+                    else {
+                        grilleDroiteControlleur.setAction(action);
+                    }
+            
+                    System.out.println(action.getNomJoeur());
+                    System.out.println(action.getPoint().toString());
+                }
+            
+            })
+        );
+        timeline.setCycleCount(size);
+        timeline.setOnFinished((ActionEvent arg0) -> {
+            btnVisualiser.setVisible(false);
+            btnReVisualiser.setVisible(true);
+            btnReVisualiser.setDisable(false);
+            lblEnCours.setVisible(false);
+            StaticPartie.getPartie().setListFIFOAction(copie);
+        });
+        
+        timeline.play();
+    }
     
     
     @Override

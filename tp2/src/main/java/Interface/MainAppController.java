@@ -118,13 +118,23 @@ public class MainAppController implements Initializable {
     
     @FXML
     private void handleBtnVisualiser(ActionEvent event) throws Exception {
+        if(StaticPartie.getPartie() != null) { //TODO && StaticPartie.getPartie().getEstFinPartie()
+            ecranCentre.getChildren().clear();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Visualiser.fxml"));
+            ecranCentre.getChildren().add(loader.load());
+            VisualiserControlleur controlleur = loader.<VisualiserControlleur>getController();
+            controlleur.initData();
+        }
+        else {
+            Alert alert = new Alert(AlertType.INFORMATION);
         
-        ecranCentre.getChildren().clear();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Visualiser.fxml"));
-        ecranCentre.getChildren().add(loader.load());
-        VisualiserControlleur controlleur = loader.<VisualiserControlleur>getController();
-        controlleur.initData();
-        
+            alert.setTitle("Visualisation non possible");
+            String s = "Veuillez terminer une partie pour pouvoir visualiser.";
+            alert.setContentText(s);
+
+            Optional<ButtonType> result = alert.showAndWait();
+            event.consume();
+        }
     }
     
     @FXML
