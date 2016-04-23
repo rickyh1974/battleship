@@ -152,7 +152,7 @@ public class Joueur {
         			System.out.println(navireTypeTemp);
         			System.out.println(placementNavires.get(navireTypeTemp).get(i).getLigne());
         			System.out.println(placementNavires.get(navireTypeTemp).get(i).getLigne());
-        			System.out.println(placementNavires.get(navireTypeTemp).get(i));
+        			
         		}
         	}		
         }
