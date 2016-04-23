@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -7,5 +9,23 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.VisualiserControlleur">
-    
+    <children>
+      <Label fx:id="lblMessage" prefHeight="100" text="Visualisation du déroulement de la partie" />
+      <HBox alignment="CENTER" prefHeight="400.0" prefWidth="300.0">
+         <children>
+            <Pane id="grilleGauche" fx:id="grilleGauche" disable="false"  >
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                </padding>
+            </Pane>
+            <Pane id="grilleDroite" fx:id="grilleDroite" disable="true" />
+         </children>
+      </HBox>
+      <VBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="btnVisualiser" mnemonicParsing="false" onAction="#handleBtnVisualiser" text="Visualiser" />
+            <Label fx:id="lblEnCours" text="Visualisation en cours..." textAlignment="CENTER" textFill="#807d7d" visible="false" /> 
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>
