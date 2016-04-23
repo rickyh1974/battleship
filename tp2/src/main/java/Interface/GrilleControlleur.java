@@ -41,93 +41,32 @@ public class GrilleControlleur implements Initializable{
     
     @FXML
     protected void onDragDetected(MouseEvent event) {
-        //drag was detected, start drag-and-drop gesture
-                System.out.println("onDragDetected");
-                Rectangle source = (Rectangle)event.getSource();
-                System.out.println(source);
-                // allow any transfer mode 
-                Dragboard db = source.startDragAndDrop(TransferMode.MOVE);
+        
+            Rectangle source = (Rectangle)event.getSource();
                 
-                // put a string on dragboard 
-                ClipboardContent content = new ClipboardContent();
-                content.putString("torpilleur");
-                db.setContent(content);
+            Dragboard dragboard = source.startDragAndDrop(TransferMode.MOVE);
                 
-                event.consume();
-    }
-    
-    @FXML 
-    protected void onDragDone(DragEvent event) {
-      // the drag-and-drop gesture ended 
-                System.out.println("onDragDone");
-                
-                // if the data was successfully moved, clear it
-               // if (event.getTransferMode() == TransferMode.MOVE) {
-                 //   StackPane stackPane = (StackPane)event.getGestureTarget();
-                   // Rectangle rectangle = (Rectangle)event.getGestureSource();
-                    //stackPane.getChildren().add(rectangle);
-                //}
-                    //rectangle.setFill(Color.PINK);
-                //}
-                
-                event.consume();
+            ClipboardContent contenu = new ClipboardContent();
+            contenu.putString("navire");
+            dragboard.setContent(contenu);
     }
        
     @FXML 
     protected void onDragOver(DragEvent event) {
-         // data is dragged over the target 
-                System.out.println("onDragOver");
-                
-                // accept it only if it is  not dragged from the same node 
-                 // and if it has a string data 
-                //if (event.getGestureSource() != grilleGauche &&
-                //        event.getDragboard().hasString()) {
-                    // allow for both copying and moving, whatever user chooses 
-                    event.acceptTransferModes(TransferMode.MOVE);
-                
-                
-                event.consume();
-    }
-    
-    @FXML
-    protected void onDragEntered(DragEvent event) {
-        // the drag-and-drop gesture entered the target 
-                System.out.println("onDragEntered");
-                // show to the user that it is an actual gesture target 
-                //if (event.getGestureSource() != grilleGauche &&
-                  //      event.getDragboard().hasString()) {
-                StackPane source = (StackPane)event.getSource();
-                System.out.println(source);
-                    //rectangle.setFill(Color.GREEN);
-                    //grilleGauche.getChildren().add(rectangle);
-                    //System.out.println(event.toString());
-                    //tuile.setId("tuileC"+i+"R"+j);
-                
-                
-                event.consume();
+        event.acceptTransferModes(TransferMode.MOVE);
     }
 
     @FXML 
     protected void onDragDropped(DragEvent event) {
-      // data dropped 
-                System.out.println("onDragDropped");
-                // if there is a string data on dragboard, read it and use it 
-                Dragboard db = event.getDragboard();
-                boolean success = false;
-                if (db.hasString()) {
-                    //target.setText(db.getString());
-                    success = true;
-                }
-                StackPane stackPane = (StackPane)event.getGestureTarget();
-                if(stackPane.getChildren().size() < 2) {
-                    Rectangle rectangle = (Rectangle)event.getGestureSource();
-                    stackPane.getChildren().add(rectangle);
-                }
-                // let the source know whether the string was successfully 
-                // transferred and used 
-                event.setDropCompleted(success);
-                
-                event.consume();
+
+        StackPane stackPane = (StackPane)event.getGestureTarget();
+        if(stackPane.getChildren().size() < 2) {
+            Rectangle rectangle = (Rectangle)event.getGestureSource();
+            stackPane.getChildren().add(rectangle);
+        }
+        
+        event.setDropCompleted(true);
+
     }
     
     private void handleMouseClick(MouseEvent mouseEvent) {
@@ -163,9 +102,6 @@ public class GrilleControlleur implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        
-        
     }    
     
     public void initialiserGrilleGauche() {
@@ -181,9 +117,6 @@ public class GrilleControlleur implements Initializable{
                 StackPane stackPane = new StackPane();
                 stackPane.getChildren().add(tuile);
                 
-                stackPane.setOnDragEntered((DragEvent dragEvent) -> {
-                    onDragEntered(dragEvent);
-                });
                 stackPane.setOnDragOver((DragEvent dragEvent) -> {
                     onDragOver(dragEvent);
                 });
@@ -263,12 +196,7 @@ public class GrilleControlleur implements Initializable{
         
         rectangle.setOnDragDetected((MouseEvent mouseEvent) -> {
            onDragDetected(mouseEvent);
-        });
-                    
-        rectangle.setOnDragDone((DragEvent dragEvent) -> {
-            onDragDone(dragEvent);
-        });
-                 
+        });      
         rectangle.setOnMouseEntered((MouseEvent mouseEvent) -> {
             onMouseEnteredRectangleCursor(mouseEvent);
         });
