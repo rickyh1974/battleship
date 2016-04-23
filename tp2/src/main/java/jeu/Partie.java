@@ -72,6 +72,7 @@ public class Partie {
 	public void placerNavire(){
 		// TODO Auto-generated constructor stub
 		joueurAI.autoPlacerNavire();
+		
 
 	}
         
