@@ -6,6 +6,7 @@ package jeu;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * @author DELL
@@ -143,9 +144,36 @@ public class Joueur {
 		this.navires = navires;
 	}
         
-        public void setPlacementNavires(HashMap<NavireType, ArrayList<Coordonnee>> placementNavires) {
-            //TODO
-        }
+    public void setPlacementNavires(HashMap<NavireType, ArrayList<Coordonnee>> placementNavires) {
+    	NavireType nomNavire;
+    	Coordonnee coordCourant;
+    	Coordonnee coordProchain;
+    	
+    	for ( NavireType navireTypeTemp : NavireType.values() ) {
+
+    		for (int i=0;i<placementNavires.get(navireTypeTemp).size();i++) {
+    			if (i==0) {
+	    			if (placementNavires.get(navireTypeTemp).get(i).getLigne()==placementNavires.get(navireTypeTemp).get(i+1).getLigne()) {
+	    				//vertical
+	    			    navires.get(navireTypeTemp).setOrientation(0);
+	    			} else {
+	    				//horizontal
+	    				navires.get(navireTypeTemp).setOrientation(1);
+	    			}
+    			}
+    			System.out.println(navireTypeTemp);
+    			System.out.println("size="+placementNavires.get(navireTypeTemp).size());
+    			System.out.println(placementNavires.get(navireTypeTemp).get(i).getLigne());
+    			System.out.println(placementNavires.get(navireTypeTemp).get(i).getCol());
+    			grillePrincipale.setNomNavire(placementNavires.get(navireTypeTemp).get(i).getLigne(), 
+    					                      placementNavires.get(navireTypeTemp).get(i).getCol(), navireTypeTemp);
+    			grillePrincipale.setCaseStatut(placementNavires.get(navireTypeTemp).get(i).getLigne(), 
+    					                       placementNavires.get(navireTypeTemp).get(i).getCol(), StatutCaseType.OCCUPE);
+    			placementNavires.get(navireTypeTemp);
+
+    		}
+    	}		
+    }
 
 	/**
 	 * @return the nBR_NAVIRE
