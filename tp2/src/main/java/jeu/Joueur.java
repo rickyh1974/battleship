@@ -6,7 +6,7 @@ package jeu;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
+
 
 /**
  * @author DELL
@@ -145,9 +145,6 @@ public class Joueur {
 	}
         
     public void setPlacementNavires(HashMap<NavireType, ArrayList<Coordonnee>> placementNavires) {
-    	NavireType nomNavire;
-    	Coordonnee coordCourant;
-    	Coordonnee coordProchain;
     	
     	for ( NavireType navireTypeTemp : NavireType.values() ) {
 
