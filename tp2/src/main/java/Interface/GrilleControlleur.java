@@ -119,8 +119,8 @@ public class GrilleControlleur implements Initializable{
                 }
                 StackPane stackPane = (StackPane)event.getGestureTarget();
                 if(stackPane.getChildren().size() < 2) {
-                Rectangle rectangle = (Rectangle)event.getGestureSource();
-                stackPane.getChildren().add(rectangle);
+                    Rectangle rectangle = (Rectangle)event.getGestureSource();
+                    stackPane.getChildren().add(rectangle);
                 }
                 // let the source know whether the string was successfully 
                 // transferred and used 
@@ -171,8 +171,8 @@ public class GrilleControlleur implements Initializable{
         
         HashMap<Integer, ArrayList<Case>> cases = StaticPartie.getPartie().getJoueurH().getGrillePrincipale().getCases();
         
-        for(int i = 1; i < 11; i++) {
-            for (int j = 1; j < 11; j++) {
+        for(int ligne = 1; ligne < 11; ligne++) {
+            for (int col = 1; col < 11; col++) {
                 
                 Tuile tuile = new Tuile();
                 tuile.setId("tuile");
@@ -197,19 +197,19 @@ public class GrilleControlleur implements Initializable{
                             tuile.toucher();
                         }
                         if(newValue.equals(StatutCaseType.TOUCHE)) {
-                            tuile.estOccupe = true;
+                            tuile.setEstOccupe();
                             tuile.toucher();
                         }
                         
                     }
                 };
                 
-                cases.get(j-1).get(i-1).statutCaseProperty().addListener(changeListener);
+                cases.get(ligne-1).get(col-1).statutCaseProperty().addListener(changeListener);
                 
-                GridPane.setConstraints(stackPane, j, i);
+                GridPane.setConstraints(stackPane, col, ligne);
                 GridPane.setHalignment(stackPane, HPos.CENTER);
                 GridPane.setValignment(stackPane, VPos.CENTER);
-                grille.add(stackPane, j, i);
+                grille.add(stackPane, col, ligne);
             }
         }
         
@@ -296,7 +296,7 @@ public class GrilleControlleur implements Initializable{
                     if(!placementNavires.containsKey(NavireType.valueOf(rectNavire.getId())))
                         placementNavires.put(NavireType.valueOf(rectNavire.getId()), new ArrayList<>());
 
-                    placementNavires.get(NavireType.valueOf(rectNavire.getId())).add(new Coordonnee(row,col));
+                    placementNavires.get(NavireType.valueOf(rectNavire.getId())).add(new Coordonnee(col,row));
                 }
             }
         }      
@@ -313,7 +313,7 @@ public class GrilleControlleur implements Initializable{
             for (int col = 1; col < 11; col++) {
                 
                 Tuile tuile = new Tuile();
-                tuile.setId("tuileC"+ligne+"R"+col);
+                tuile.setId("tuile");
                 tuile.setOnMouseClicked((MouseEvent mouseEvent) -> {
                     handleMouseClick(mouseEvent);
                 });
@@ -330,8 +330,7 @@ public class GrilleControlleur implements Initializable{
                             tuile.toucher();
                         }
                         if(newValue.equals(StatutCaseType.TOUCHE)) {
-                            //tuile.estOccupe = true;
-                            tuile.occuper();
+                            tuile.setEstOccupe();
                             tuile.toucher();
                         }
                         
@@ -339,13 +338,6 @@ public class GrilleControlleur implements Initializable{
                 };
                 
                 cases.get(ligne-1).get(col-1).statutCaseProperty().addListener(changeListener);
-                
-                //cases.get(ligne-1).get(col-1).setStatutCase(cases.get(ligne-1).get(col-1).getStatutCase());
-                //if(cases.get(ligne-1).get(col-1).statutCaseProperty().equals(StatutCaseType.DEMANDENONTOUCHE)) {
-                  //  cases.get(ligne-1).get(col-1).setStatutCase(StatutCaseType.DEMANDENONTOUCHE);
-                //}
-                
-            
         
                 GridPane.setConstraints(tuile, col, ligne);
                 GridPane.setHalignment(tuile, HPos.CENTER);

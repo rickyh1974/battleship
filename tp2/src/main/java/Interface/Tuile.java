@@ -24,8 +24,7 @@ import javafx.scene.shape.Rectangle;
             
     }
     
-    public void occuper() {
+    public void setEstOccupe() {
         estOccupe = true;
-        this.setFill(Color.DARKSLATEGRAY);
     }
 }
