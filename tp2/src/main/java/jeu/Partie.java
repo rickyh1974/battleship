@@ -142,7 +142,7 @@ public class Partie {
 				actionAI.setNomJoeur(joueurAI.getNom());
 				AItempRandomShot=joueurAI.RandomShots();
 				AItempRandomShot.setTouche(joueurH.verifierShot(AItempRandomShot));
-				if ( temp.isTouche()) {
+				if ( AItempRandomShot.isTouche()) {
 					joueurH.getGrillePrincipale().setCaseStatut(AItempRandomShot.getLigne(), AItempRandomShot.getCol(), StatutCaseType.TOUCHE);
 					joueurAI.getGrilleAdverse().setCaseStatut(AItempRandomShot.getLigne(), AItempRandomShot.getCol(), StatutCaseType.TOUCHE);
 					joueurAI.ajouteUnTotalPoints();

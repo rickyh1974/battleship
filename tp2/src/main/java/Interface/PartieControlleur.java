@@ -71,9 +71,7 @@ public class PartieControlleur implements Initializable{
             grilleDroite.getChildren().add(loader2.load());    
             GrilleControlleur controller2 = loader2.<GrilleControlleur>getController();
             controller2.initialiserGrilleDroite();
-        
-        
-        
+             
             final ChangeListener changeListener = (ChangeListener) (ObservableValue observableValue, Object oldValue, Object newValue) -> {
                 int ligne = ((Coordonnee)newValue).getLigne();
                 int col = ((Coordonnee)newValue).getCol();
