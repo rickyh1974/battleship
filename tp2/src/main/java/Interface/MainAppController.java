@@ -110,7 +110,10 @@ public class MainAppController implements Initializable {
     private void handleBtnVisualiser(ActionEvent event) throws Exception {
         
         ecranCentre.getChildren().clear();
-        ecranCentre.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/Visualiser.fxml")));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Visualiser.fxml"));
+        ecranCentre.getChildren().add(loader.load());
+        VisualiserControlleur controlleur = loader.<VisualiserControlleur>getController();
+        controlleur.initData();
         
     }
     

@@ -41,12 +41,6 @@ public class PartieControlleur implements Initializable{
     private Pane grilleDroite;
     
     @FXML
-    private StackPane stackPaneNavires;
-    
-    @FXML
-    private Rectangle rectangle;
-    
-    @FXML
     private Button btnCommencer;
     
     @FXML
@@ -92,7 +86,7 @@ public class PartieControlleur implements Initializable{
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
         
                     alert.setTitle("Partie terminée");
-                    String s = "La partie est terminée";
+                    String s = "La partie est terminée.";
                     alert.setContentText(s);
                     grilleDroite.setDisable(true);
                     Optional<ButtonType> result = alert.showAndWait();
