@@ -144,7 +144,17 @@ public class Joueur {
 	}
         
         public void setPlacementNavires(HashMap<NavireType, ArrayList<Coordonnee>> placementNavires) {
-            //TODO
+        	NavireType nomNavire;
+        	Coordonnee coordCourant;
+        	Coordonnee coordProchain;
+        	for ( NavireType navireTypeTemp : NavireType.values() ) {
+        		for (int i=0;i<10;i++) {
+        			System.out.println(navireTypeTemp);
+        			System.out.println(placementNavires.get(navireTypeTemp).get(i).getLigne());
+        			System.out.println(placementNavires.get(navireTypeTemp).get(i).getLigne());
+        			System.out.println(placementNavires.get(navireTypeTemp).get(i));
+        		}
+        	}		
         }
 
 	/**
