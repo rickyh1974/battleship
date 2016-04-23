@@ -6,7 +6,7 @@ package jeu;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
+
 
 /**
  * @author DELL
@@ -172,7 +172,7 @@ public class Joueur {
     					                      placementNavires.get(navireTypeTemp).get(i).getCol(), navireTypeTemp);
     			grillePrincipale.setCaseStatut(placementNavires.get(navireTypeTemp).get(i).getLigne(), 
     					                       placementNavires.get(navireTypeTemp).get(i).getCol(), StatutCaseType.OCCUPE);
-    			placementNavires.get(navireTypeTemp);
+    			//placementNavires.get(navireTypeTemp);
 
     		}
     	}		

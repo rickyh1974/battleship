@@ -23,9 +23,9 @@ public class Case {
 		
 	}
         
-        public ObjectProperty statutCaseProperty() {
-            return statutCase;
-        }
+    public ObjectProperty statutCaseProperty() {
+         return statutCase;
+    }
 
 	/**
 	 * @return the statutCase
