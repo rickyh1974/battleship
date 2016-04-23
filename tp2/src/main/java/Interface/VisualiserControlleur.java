@@ -42,6 +42,14 @@ public class VisualiserControlleur implements Initializable{
     
         LinkedList<Action> listFIFOAction = StaticPartie.getPartie().getListFIFOAction();
         for(Action action : listFIFOAction)  {
+            if(action.getNomJoeur().equals("JoueurAI")) {
+                grilleGaucheControlleur.setAction(action);
+            }
+            else {
+                grilleDroiteControlleur.setAction(action);
+            }
+                
+            
             System.out.println(action.getNomJoeur());
             System.out.println(action.getPoint().toString());
         }

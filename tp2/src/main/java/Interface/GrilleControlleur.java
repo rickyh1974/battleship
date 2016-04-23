@@ -25,6 +25,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
+import jeu.Action;
 import jeu.Case;
 import jeu.Coordonnee;
 import jeu.NavireType;
@@ -318,31 +319,31 @@ public class GrilleControlleur implements Initializable{
             
             if(node.toString().contains("StackPane")) {
                 
-                if(place.get(NavireType.PORTEAVIONS).contains(new Coordonnee(grille.getColumnIndex(node),grille.getRowIndex(node)))) {
+                if(place.get(NavireType.PORTEAVIONS).contains(new Coordonnee(grille.getColumnIndex(node)-1,grille.getRowIndex(node)-1))) {
                     rectangle   = creerRectangle();
                     rectangle.setId(NavireType.PORTEAVIONS.toString());
                     rectangle.setFill(Color.DARKSLATEBLUE);
                     ((StackPane)node).getChildren().add(rectangle);
                 }
-                if(place.get(NavireType.CROISSEUR).contains(new Coordonnee(grille.getColumnIndex(node),grille.getRowIndex(node)))) {
+                if(place.get(NavireType.CROISSEUR).contains(new Coordonnee(grille.getColumnIndex(node)-1,grille.getRowIndex(node)-1))) {
                     rectangle   = creerRectangle();
                     rectangle.setId(NavireType.CROISSEUR.toString());
                     rectangle.setFill(Color.DARKSLATEGRAY);
                     ((StackPane)node).getChildren().add(rectangle);
                 }
-                if(place.get(NavireType.CONTRETORPILLEUR).contains(new Coordonnee(grille.getColumnIndex(node),grille.getRowIndex(node)))) {
+                if(place.get(NavireType.CONTRETORPILLEUR).contains(new Coordonnee(grille.getColumnIndex(node)-1,grille.getRowIndex(node)-1))) {
                     rectangle   = creerRectangle();
                     rectangle.setId(NavireType.CONTRETORPILLEUR.toString());
                     rectangle.setFill(Color.DARKOLIVEGREEN);
                     ((StackPane)node).getChildren().add(rectangle);
                 }
-                if(place.get(NavireType.SOUSMARIN).contains(new Coordonnee(grille.getColumnIndex(node),grille.getRowIndex(node)))) {
+                if(place.get(NavireType.SOUSMARIN).contains(new Coordonnee(grille.getColumnIndex(node)-1,grille.getRowIndex(node)-1))) {
                     rectangle   = creerRectangle();
                     rectangle.setId(NavireType.SOUSMARIN.toString());
                     rectangle.setFill(Color.DARKGOLDENROD);
                     ((StackPane)node).getChildren().add(rectangle);
                 }
-                if(place.get(NavireType.TORPILLEUR).contains(new Coordonnee(grille.getColumnIndex(node),grille.getRowIndex(node)))) {
+                if(place.get(NavireType.TORPILLEUR).contains(new Coordonnee(grille.getColumnIndex(node)-1,grille.getRowIndex(node)-1))) {
                     rectangle   = creerRectangle();
                     rectangle.setId(NavireType.TORPILLEUR.toString());
                     rectangle.setFill(Color.DARKORCHID);
@@ -351,6 +352,42 @@ public class GrilleControlleur implements Initializable{
                 
             }
         }         
+    }
+    
+    public void setAction(Action action) {
+        
+        ObservableList<Node> childrens = grille.getChildren();
+        Coordonnee coord = action.getPoint();
+        
+        for(Node node : childrens) {
+            if(node.toString().contains("StackPane") || node.toString().contains("tuile")) {
+                
+                if(grille.getRowIndex(node)-1 == coord.getLigne() && grille.getColumnIndex(node)-1 == coord.getCol()) {
+                    
+                    Tuile tuile;
+                    if(!node.toString().contains("tuile")) {
+                        
+                        ObservableList<Node> stackPaneChildrens = ((StackPane)node).getChildren();
+                    
+                        if(stackPaneChildrens.get(0).getId().equals("tuile")) {
+                            tuile = (Tuile)stackPaneChildrens.get(0);
+                        }
+                        else {
+                            tuile = (Tuile)stackPaneChildrens.get(1);
+                        }
+                    }
+                    else
+                        tuile = (Tuile)node;
+                            
+                    if(coord.isTouche())
+                        tuile.setEstOccupe();
+
+                    tuile.toucher();
+                    
+                }
+            }
+        }
+        
     }
     
     public void initialiserGrilleDroite() {

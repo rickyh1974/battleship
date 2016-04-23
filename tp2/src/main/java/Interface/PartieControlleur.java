@@ -199,6 +199,7 @@ public class PartieControlleur implements Initializable{
         grilleGauche.getChildren().add(loader.load());    
         grilleGaucheControlleur = loader.<GrilleControlleur>getController();
         grilleGaucheControlleur.initialiserGrilleGauche();
+        grilleGaucheControlleur.chargerNavires();
     }
     
     
