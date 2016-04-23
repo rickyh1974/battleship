@@ -103,6 +103,16 @@ public class MainAppController implements Initializable {
                 
             }
         }
+        else {
+            Alert alert = new Alert(AlertType.INFORMATION);
+        
+            alert.setTitle("Sauvegarde non possible");
+            String s = "Veuillez commencer une partie pour pouvoir sauvegarder.";
+            alert.setContentText(s);
+
+            Optional<ButtonType> result = alert.showAndWait();
+            event.consume();
+        }
         
     }
     
@@ -137,13 +147,6 @@ public class MainAppController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/NouvellePartie.fxml"));
         ecranCentre.getChildren().add(loader.load());
         NouvellePartieControlleur nouvellePartieControlleur = loader.<NouvellePartieControlleur>getController();
-
-        /*StaticPartie.partieProperty().addListener(new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
-                change();
-            }
-        });*/
     }
     public void change() {
         System.out.println("CHANGELISTENER");
