@@ -134,7 +134,7 @@ public class GrilleControlleur implements Initializable{
         if(!source.estTouche) {
             Integer row = grille.getRowIndex(source)-1;
             Integer col = grille.getColumnIndex(source)-1;
-            coordonneeProperty.set(new Coordonnee(row,col));
+            coordonneeProperty.set(new Coordonnee(col,row));
             (source.getScene()).setCursor(Cursor.DEFAULT);
         }
     }
@@ -175,7 +175,7 @@ public class GrilleControlleur implements Initializable{
             for (int j = 1; j < 11; j++) {
                 
                 Tuile tuile = new Tuile();
-                tuile.setId("tuileC"+i+"R"+j);
+                tuile.setId("tuile");
                 
                 StackPane stackPane = new StackPane();
                 stackPane.getChildren().add(tuile);
@@ -287,13 +287,16 @@ public class GrilleControlleur implements Initializable{
                 ObservableList<Node> stackPaneChildrens = ((StackPane)node).getChildren();
                 if(stackPaneChildrens.size()==2) {
                     Rectangle rectNavire = (Rectangle)stackPaneChildrens.get(1);
+                    if(rectNavire.getId().equals("tuile"))
+                        rectNavire = (Rectangle)stackPaneChildrens.get(0);
+                    
                     Integer row = grille.getRowIndex(node)-1;
                     Integer col = grille.getColumnIndex(node)-1;
                     
                     if(!placementNavires.containsKey(NavireType.valueOf(rectNavire.getId())))
                         placementNavires.put(NavireType.valueOf(rectNavire.getId()), new ArrayList<>());
 
-                    placementNavires.get(NavireType.valueOf(rectNavire.getId())).add(new Coordonnee(col,row));
+                    placementNavires.get(NavireType.valueOf(rectNavire.getId())).add(new Coordonnee(row,col));
                 }
             }
         }      
