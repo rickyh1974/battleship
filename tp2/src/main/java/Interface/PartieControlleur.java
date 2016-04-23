@@ -41,12 +41,6 @@ public class PartieControlleur implements Initializable{
     private Pane grilleDroite;
     
     @FXML
-    private StackPane stackPaneNavires;
-    
-    @FXML
-    private Rectangle rectangle;
-    
-    @FXML
     private Button btnCommencer;
     
     @FXML
@@ -83,17 +77,21 @@ public class PartieControlleur implements Initializable{
             final ChangeListener changeListener = (ChangeListener) (ObservableValue observableValue, Object oldValue, Object newValue) -> {
                 int ligne = ((Coordonnee)newValue).getLigne();
                 int col = ((Coordonnee)newValue).getCol();
-                StaticPartie.getPartie().executerTour(new Coordonnee(ligne,col));
+                StaticPartie.getPartie().executerTour(new Coordonnee(col,ligne));
             };
             controller2.coordonneeProperty.addListener(changeListener);
         
-            //this.estFinPartie.bind(StaticPartie.getPartie().estFinPartieProperty());
+            
             final ChangeListener changeListener2 = (ChangeListener) (ObservableValue observableValue, Object oldValue, Object newValue) -> {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
         
                     alert.setTitle("Partie terminée");
-                    String s = "La partie est terminée";
-                    alert.setContentText(s);
+                    String message;
+                    if(StaticPartie.getPartie().getJoueurAI().getTotalPoints() > StaticPartie.getPartie().getJoueurH().getTotalPoints())
+                        message = "Le joueur AI a gagné la partie !";
+                    else
+                        message = "Vous avez gagné la partie !";
+                    alert.setContentText(message);
                     grilleDroite.setDisable(true);
                     Optional<ButtonType> result = alert.showAndWait();
                     
