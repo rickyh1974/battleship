@@ -18,6 +18,7 @@ public class Joueur {
 	private int totalPoints=0;
 	private final int NBR_NAVIRE=5;
 	private HashMap<NavireType,Navire> navires;
+        private HashMap<NavireType, ArrayList<Coordonnee>> placementNaviresInitial;
 	private Grille grilleAdverse;
 	private Grille grillePrincipale;
 	
@@ -148,6 +149,8 @@ public class Joueur {
     	NavireType nomNavire;
     	Coordonnee coordCourant;
     	Coordonnee coordProchain;
+        
+        this.placementNaviresInitial = placementNavires;
     	
     	for ( NavireType navireTypeTemp : NavireType.values() ) {
 
@@ -198,6 +201,10 @@ public class Joueur {
 		
 		
 	}
+        
+        public HashMap<NavireType, ArrayList<Coordonnee>> getPlacementNaviresInitial() {
+            return this.placementNaviresInitial;
+        }
 	
 	
 	/* (non-Javadoc)

@@ -79,8 +79,8 @@ public class Partie {
         public void placerNaviresJoueurH(HashMap<NavireType, ArrayList<Coordonnee>> placementNavires) {
             joueurH.setPlacementNavires(placementNavires);
         }
+        
             
-	
 	public void reCommencerPartie() {
 		initialiser();
 		commencerPartie();

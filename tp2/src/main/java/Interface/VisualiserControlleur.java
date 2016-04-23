@@ -2,6 +2,7 @@
 package Interface;
 
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import jeu.Action;
 
 public class VisualiserControlleur implements Initializable{
 
@@ -37,11 +39,12 @@ public class VisualiserControlleur implements Initializable{
         btnVisualiser.setDisable(true);
         lblEnCours.setVisible(true);
         
-    /*
+    
         LinkedList<Action> listFIFOAction = StaticPartie.getPartie().getListFIFOAction();
         for(Action action : listFIFOAction)  {
-            System.out.println(action.toString());
-        }*/
+            System.out.println(action.getNomJoeur());
+            System.out.println(action.getPoint().toString());
+        }
     }
     
     
@@ -55,19 +58,17 @@ public class VisualiserControlleur implements Initializable{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Grille.fxml"));
         grilleGauche.getChildren().add(loader.load());    
         grilleGaucheControlleur = loader.<GrilleControlleur>getController();
+        grilleGaucheControlleur.initialiserGrilleGauche();
+        grilleGaucheControlleur.chargerNavires();
         
         FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/fxml/Grille.fxml"));
         grilleDroite.getChildren().add(loader2.load());    
-        grilleDroiteControlleur = loader2.<GrilleControlleur>getController();
-        
-        grilleGaucheControlleur.initialiserGrilleGauche();
+        grilleDroiteControlleur = loader2.<GrilleControlleur>getController();   
         grilleDroiteControlleur.initialiserGrilleDroite();
         
         grilleGauche.setDisable(true);
         grilleDroite.setDisable(true);
-        
-        
-        //grilleGaucheControlleur.initialiserNavires();
+
     }
     
 

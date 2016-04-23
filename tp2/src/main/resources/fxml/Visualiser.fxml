@@ -8,9 +8,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.VisualiserControlleur">
+<VBox id="VBox" alignment="CENTER" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Interface.VisualiserControlleur">
     <children>
-      <Label fx:id="lblMessage" prefHeight="100" text="Visualisation du déroulement de la partie" />
+      <Label fx:id="lblMessage" prefHeight="150" text="Visualisation du déroulement de la partie" />
       <HBox alignment="CENTER" prefHeight="400.0" prefWidth="300.0">
          <children>
             <Pane id="grilleGauche" fx:id="grilleGauche" disable="false"  >
@@ -21,11 +21,11 @@
             <Pane id="grilleDroite" fx:id="grilleDroite" disable="true" />
          </children>
       </HBox>
-      <VBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+      <VBox alignment="BOTTOM_CENTER" prefHeight="400.0" prefWidth="200.0">
          <children>
             <Button fx:id="btnVisualiser" mnemonicParsing="false" onAction="#handleBtnVisualiser" text="Visualiser" />
             <Label fx:id="lblEnCours" text="Visualisation en cours..." textAlignment="CENTER" textFill="#807d7d" visible="false" /> 
          </children>
       </VBox>
    </children>
-</AnchorPane>
+</VBox>

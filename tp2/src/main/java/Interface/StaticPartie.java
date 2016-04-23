@@ -7,7 +7,7 @@ import jeu.Partie;
 
     
 public class StaticPartie {
-
+    
     private static ObjectProperty<Partie> partie = new SimpleObjectProperty<>();
     
     public static ObjectProperty partieProperty() {
@@ -21,9 +21,5 @@ public class StaticPartie {
     public static void setPartie(Partie part) {
         partie.set(part);
     }
-    
-    /*public StaticPartie() {
-        
-    }*/
     
 }
