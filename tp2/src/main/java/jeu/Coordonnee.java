@@ -3,35 +3,20 @@
  */
 package jeu;
 
-/**
- * @author Ricky Hoben
- *  Une class qui contient les coordonnées Col et ligne d'un tableau cartésien.
- *  Ils ne contiennent que des nombres entier.
- */
+
 public class Coordonnee {
 	
 	private int col; // numéro de la colonne de 0 à 9
 	private int ligne; // numéro de la ligne 0 à 9
 	private boolean touche; //indique si coordonné a été touché
 	
-	/**
-	 * Default Constructeur 
-	 * col = initialized to 0
-	 * ligne = initialized to 0 
-	 * touche initialisé à zero
-	 */
 	public Coordonnee() {
 		setCol(0);
 		setLigne(0);
 		setTouche(false);
 	}
 		
-	/**
-	 * Constructeur 
-	 * col = numéro de la colonne
-	 * ligne = numéro de la ligne
-	 * touche  false si non tout true si touche
-	 */
+
 	public Coordonnee(int col, int ligne) {
 		setCol(col);
 		setLigne(ligne);
@@ -57,24 +42,18 @@ public class Coordonnee {
 		this.ligne = ligne;
 	}
 	
-	/**
-	 * @return the touche
-	 */
+
 	public boolean isTouche() {
 		return touche;
 	}
 
-	/**
-	 * @param touche the touche to set
-	 */
+
 	public void setTouche(boolean touche) {
 		this.touche = touche;
 	}
 
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -84,9 +63,7 @@ public class Coordonnee {
 		return result;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -103,9 +80,7 @@ public class Coordonnee {
 		return true;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
+
 	@Override
 	public String toString() {
 		return "Coordonnee [col=" + col + ", ligne=" + ligne + ", touche=" + touche + "]";

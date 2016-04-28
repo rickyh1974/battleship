@@ -11,15 +11,8 @@ import java.io.FileNotFoundException;
 import jeu.Partie;;
 
 
-/**
- * @author DELL
- *
- */
 public class ChargementXML {
 
-	/**
-	 * 
-	 */
 	public static Partie chargementXML(String path) {
 		
 		XMLDecoder decoder=null;
@@ -29,12 +22,9 @@ public class ChargementXML {
 			System.out.println("ERROR: "+path);
 		}
 		Partie object=(Partie)decoder.readObject();
-		//System.out.println(object);
-		System.out.println("Dans chargement");
-		object.afficheTouteLesGrilles();
+                
 		return object;
 	}
-		// TODO Auto-generated constructor stub
 }
 
 

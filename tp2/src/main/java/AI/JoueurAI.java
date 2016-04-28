@@ -23,9 +23,7 @@ public class JoueurAI extends Joueur {
 	*/ 
 	int niveau;
 
-	/**
-	 * 
-	 */
+	
 	public JoueurAI() {		
 		super("JoueurAI");
 		this.niveau=0;
@@ -40,8 +38,6 @@ public class JoueurAI extends Joueur {
 		boolean returnVal=false;
 		final int MaxLigne = 10;
 		NavireType nomNavire;
-		
-		grille.afficheGrille();
 		
 		for ( NavireType navireTypeTemp : NavireType.values() ) {
 			compteur=0;
@@ -58,17 +54,14 @@ public class JoueurAI extends Joueur {
 				
 				// vertical
 				if (randOrient == 0) {
-					//
-					System.out.println("randOrient="+randOrient+"tempLigne="+tempLigne+" randLigne="+randLigne+"tempCol="+tempCol+" randCol="+randCol);
+					
 					if ( randLigne <= (MaxLigne-tailleNavire) ){
 						while( tempLigne < 10 && grille.getCaseStatut(tempLigne, randCol)==StatutCaseType.RIEN && compteur != tailleNavire ) {					
 							++compteur;
 							++tempLigne;
-							
 						}
 					}
 					if (compteur==tailleNavire) {
-	
 						returnVal=true;
 					} else{
 						returnVal=false;
@@ -76,7 +69,6 @@ public class JoueurAI extends Joueur {
 						
 					
 				}else{
-					System.out.println("randOrient="+randOrient+"tempLigne="+tempLigne+" randLigne="+randLigne+"tempCol="+tempCol+" randCol="+randCol);
 					if ( randCol <= (MaxLigne-tailleNavire) ){
 						while( tempCol < 10 && grille.getCaseStatut(randLigne, tempCol)==StatutCaseType.RIEN && compteur != tailleNavire ) {					
 							++compteur;
@@ -108,7 +100,6 @@ public class JoueurAI extends Joueur {
 		    	compteur=0;
 		    	tempCol=randCol;
 			    while(  compteur != tailleNavire ) {					
-					System.out.println("randLigne="+randLigne+" tempCol="+tempCol+" randCol="+randCol);
 					grille.setNomNavire(randLigne,tempCol, nomNavire);
 					grille.setCaseStatut(randLigne,tempCol, StatutCaseType.OCCUPE);
 					++compteur;
@@ -118,40 +109,27 @@ public class JoueurAI extends Joueur {
 		    }
 	    
 		}
-	    
-        grille.afficheGrille();
-
 	}
 	
 	public Coordonnee RandomShots(){
 		int randCol=0,randLigne=0;
-	//boolean returnValue=false;
+                
 		Coordonnee returnShot = new Coordonnee();
 		
 		// cherche un point qui n'a pas encore été utilisé
 		do {
 			randCol=ThreadLocalRandom.current().nextInt(0, 10);					
 			randLigne=ThreadLocalRandom.current().nextInt(0, 10);	
-	/*		if (this.getgrilleAdverse().getCaseStatut(randLigne, randCol)== 0 ){
-				returnValue=true;
-			}else{
-				returnValue=false;
-			};	*/
-			System.out.println(this.getGrilleAdverse().getCaseStatut(randLigne, randCol));
 		} while( ((this.getGrilleAdverse().getCaseStatut(randLigne, randCol)== StatutCaseType.RIEN ) ? false : true) );
-		
 		
 		
 		returnShot.setLigne(randLigne);
 		returnShot.setCol(randCol);
 			
 		return returnShot; 
-		 
-		// to do develop
 	}
 	
 	public void MinMaxShots(){
-		// 	to do develop
 		
 	}
 	
