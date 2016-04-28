@@ -20,6 +20,16 @@
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
     </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-utils</artifactId>
+      <version>1.1</version>
+    </dependency>
   </dependencies>
   
   <build>
@@ -32,10 +42,18 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                    <archive>
-                	<manifest>
-				<mainClass>Interface.MainApp</mainClass>
-			</manifest>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>  
+                <version>2.6</version>
+                <configuration>
+                     <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>Interface.MainApp</mainClass>
+                        </manifest>
                     </archive>
                 </configuration>
             </plugin>
