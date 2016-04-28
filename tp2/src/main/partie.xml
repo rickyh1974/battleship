@@ -1,0 +1,2221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_77" class="java.beans.XMLDecoder">
+ <object class="jeu.Partie" id="Partie0">
+  <void property="etatPartie">
+   <object class="java.lang.Enum" method="valueOf">
+    <class>jeu.EtatPartieType</class>
+    <string>tourJoueurH</string>
+   </object>
+  </void>
+  <void property="joueurAI">
+   <object class="AI.JoueurAI" id="JoueurAI0">
+    <void id="Grille0" property="grillePrincipale">
+     <void id="HashMap0" property="cases">
+      <void id="ArrayList0" index="0">
+       <void index="0">
+        <void property="statutCase">
+         <object class="java.lang.Enum" id="StatutCaseType0" method="valueOf">
+          <class>jeu.StatutCaseType</class>
+          <string>DEMANDENONTOUCHE</string>
+         </object>
+        </void>
+       </void>
+       <void index="1">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="2">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="3">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="4">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="5">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="6">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="7">
+        <void property="nomNavire">
+         <object class="java.lang.Enum" id="NavireType0" method="valueOf">
+          <class>jeu.NavireType</class>
+          <string>CONTRETORPILLEUR</string>
+         </object>
+        </void>
+        <void property="statutCase">
+         <object class="java.lang.Enum" id="StatutCaseType1" method="valueOf">
+          <class>jeu.StatutCaseType</class>
+          <string>TOUCHE</string>
+         </object>
+        </void>
+       </void>
+       <void index="8">
+        <void property="nomNavire">
+         <object idref="NavireType0"/>
+        </void>
+        <void property="statutCase">
+         <object idref="StatutCaseType1"/>
+        </void>
+       </void>
+       <void index="9">
+        <void property="nomNavire">
+         <object idref="NavireType0"/>
+        </void>
+        <void property="statutCase">
+         <object idref="StatutCaseType1"/>
+        </void>
+       </void>
+      </void>
+      <void id="ArrayList1" index="1">
+       <void index="0">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="1">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="2">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="3">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="4">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="5">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="6">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="7">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="8">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="9">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+      </void>
+      <void id="ArrayList2" index="2">
+       <void index="0">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="1">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="2">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="3">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="4">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="5">
+        <void property="nomNavire">
+         <object class="java.lang.Enum" id="NavireType1" method="valueOf">
+          <class>jeu.NavireType</class>
+          <string>PORTEAVIONS</string>
+         </object>
+        </void>
+        <void property="statutCase">
+         <object idref="StatutCaseType1"/>
+        </void>
+       </void>
+       <void index="6">
+        <void property="nomNavire">
+         <object idref="NavireType1"/>
+        </void>
+        <void property="statutCase">
+         <object idref="StatutCaseType1"/>
+        </void>
+       </void>
+       <void index="7">
+        <void property="nomNavire">
+         <object idref="NavireType1"/>
+        </void>
+        <void property="statutCase">
+         <object idref="StatutCaseType1"/>
+        </void>
+       </void>
+       <void index="8">
+        <void property="nomNavire">
+         <object idref="NavireType1"/>
+        </void>
+        <void property="statutCase">
+         <object idref="StatutCaseType1"/>
+        </void>
+       </void>
+       <void index="9">
+        <void property="nomNavire">
+         <object idref="NavireType1"/>
+        </void>
+        <void property="statutCase">
+         <object idref="StatutCaseType1"/>
+        </void>
+       </void>
+      </void>
+      <void id="ArrayList3" index="3">
+       <void index="0">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="1">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="2">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="3">
+        <void property="nomNavire">
+         <object class="java.lang.Enum" id="NavireType2" method="valueOf">
+          <class>jeu.NavireType</class>
+          <string>CROISSEUR</string>
+         </object>
+        </void>
+        <void property="statutCase">
+         <object idref="StatutCaseType1"/>
+        </void>
+       </void>
+       <void index="4">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="5">
+        <void property="nomNavire">
+         <object class="java.lang.Enum" id="NavireType3" method="valueOf">
+          <class>jeu.NavireType</class>
+          <string>SOUSMARIN</string>
+         </object>
+        </void>
+        <void property="statutCase">
+         <object idref="StatutCaseType1"/>
+        </void>
+       </void>
+       <void index="6">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="7">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="8">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="9">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+      </void>
+      <void id="ArrayList4" index="4">
+       <void index="0">
+        <void property="nomNavire">
+         <object class="java.lang.Enum" id="NavireType4" method="valueOf">
+          <class>jeu.NavireType</class>
+          <string>TORPILLEUR</string>
+         </object>
+        </void>
+        <void property="statutCase">
+         <object idref="StatutCaseType1"/>
+        </void>
+       </void>
+       <void index="1">
+        <void property="nomNavire">
+         <object idref="NavireType4"/>
+        </void>
+        <void property="statutCase">
+         <object idref="StatutCaseType1"/>
+        </void>
+       </void>
+       <void index="2">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="3">
+        <void property="nomNavire">
+         <object idref="NavireType2"/>
+        </void>
+        <void property="statutCase">
+         <object idref="StatutCaseType1"/>
+        </void>
+       </void>
+       <void index="4">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="5">
+        <void property="nomNavire">
+         <object idref="NavireType3"/>
+        </void>
+        <void property="statutCase">
+         <object idref="StatutCaseType1"/>
+        </void>
+       </void>
+       <void index="6">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="7">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="8">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="9">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+      </void>
+      <void id="ArrayList5" index="5">
+       <void index="0">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="1">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="2">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="3">
+        <void property="nomNavire">
+         <object idref="NavireType2"/>
+        </void>
+        <void property="statutCase">
+         <object idref="StatutCaseType1"/>
+        </void>
+       </void>
+       <void index="4">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="5">
+        <void property="nomNavire">
+         <object idref="NavireType3"/>
+        </void>
+        <void property="statutCase">
+         <object idref="StatutCaseType1"/>
+        </void>
+       </void>
+       <void index="6">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="7">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="8">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="9">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+      </void>
+      <void id="ArrayList6" index="6">
+       <void index="0">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="1">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="2">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="3">
+        <void property="nomNavire">
+         <object idref="NavireType2"/>
+        </void>
+        <void property="statutCase">
+         <object idref="StatutCaseType1"/>
+        </void>
+       </void>
+       <void index="4">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="5">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="6">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="7">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="8">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="9">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+      </void>
+      <void id="ArrayList7" index="7">
+       <void index="0">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="1">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="2">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="3">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="4">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="5">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="6">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="7">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="8">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="9">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+      </void>
+      <void id="ArrayList8" index="8">
+       <void index="0">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="1">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="2">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="3">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="4">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="5">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="6">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="7">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="8">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="9">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+      </void>
+      <void id="ArrayList9" index="9">
+       <void index="0">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="1">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="2">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="3">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="4">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="5">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="6">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="7">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="8">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+       <void index="9">
+        <void property="statutCase">
+         <object idref="StatutCaseType0"/>
+        </void>
+       </void>
+      </void>
+     </void>
+    </void>
+    <void id="HashMap1" property="navires">
+     <void method="get">
+      <object idref="NavireType0"/>
+      <void property="nbPoints">
+       <int>0</int>
+      </void>
+     </void>
+     <void method="get">
+      <object idref="NavireType4"/>
+      <void property="nbPoints">
+       <int>0</int>
+      </void>
+     </void>
+     <void method="get">
+      <object idref="NavireType1"/>
+      <void property="nbPoints">
+       <int>0</int>
+      </void>
+     </void>
+     <void method="get">
+      <object idref="NavireType2"/>
+      <void property="nbPoints">
+       <int>0</int>
+      </void>
+     </void>
+     <void method="get">
+      <object idref="NavireType3"/>
+      <void property="nbPoints">
+       <int>0</int>
+      </void>
+     </void>
+    </void>
+   </object>
+  </void>
+  <void property="joueurH">
+   <object class="jeu.Joueur">
+    <void property="grilleAdverse">
+     <object class="jeu.Grille" id="Grille1">
+      <void id="HashMap2" property="cases">
+       <void id="ArrayList10" index="0">
+        <void index="0">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="1">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="2">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="3">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="4">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="5">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="6">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="7">
+         <void property="statutCase">
+          <object idref="StatutCaseType1"/>
+         </void>
+        </void>
+        <void index="8">
+         <void property="statutCase">
+          <object idref="StatutCaseType1"/>
+         </void>
+        </void>
+        <void index="9">
+         <void property="statutCase">
+          <object idref="StatutCaseType1"/>
+         </void>
+        </void>
+       </void>
+       <void id="ArrayList11" index="1">
+        <void index="0">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="1">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="2">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="3">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="4">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="5">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="6">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="7">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="8">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="9">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+       </void>
+       <void id="ArrayList12" index="2">
+        <void index="0">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="1">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="2">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="3">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="4">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="5">
+         <void property="statutCase">
+          <object idref="StatutCaseType1"/>
+         </void>
+        </void>
+        <void index="6">
+         <void property="statutCase">
+          <object idref="StatutCaseType1"/>
+         </void>
+        </void>
+        <void index="7">
+         <void property="statutCase">
+          <object idref="StatutCaseType1"/>
+         </void>
+        </void>
+        <void index="8">
+         <void property="statutCase">
+          <object idref="StatutCaseType1"/>
+         </void>
+        </void>
+        <void index="9">
+         <void property="statutCase">
+          <object idref="StatutCaseType1"/>
+         </void>
+        </void>
+       </void>
+       <void id="ArrayList13" index="3">
+        <void index="0">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="1">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="2">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="3">
+         <void property="statutCase">
+          <object idref="StatutCaseType1"/>
+         </void>
+        </void>
+        <void index="4">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="5">
+         <void property="statutCase">
+          <object idref="StatutCaseType1"/>
+         </void>
+        </void>
+        <void index="6">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="7">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="8">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="9">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+       </void>
+       <void id="ArrayList14" index="4">
+        <void index="0">
+         <void property="statutCase">
+          <object idref="StatutCaseType1"/>
+         </void>
+        </void>
+        <void index="1">
+         <void property="statutCase">
+          <object idref="StatutCaseType1"/>
+         </void>
+        </void>
+        <void index="2">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="3">
+         <void property="statutCase">
+          <object idref="StatutCaseType1"/>
+         </void>
+        </void>
+        <void index="4">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="5">
+         <void property="statutCase">
+          <object idref="StatutCaseType1"/>
+         </void>
+        </void>
+        <void index="6">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="7">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="8">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="9">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+       </void>
+       <void id="ArrayList15" index="5">
+        <void index="0">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="1">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="2">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="3">
+         <void property="statutCase">
+          <object idref="StatutCaseType1"/>
+         </void>
+        </void>
+        <void index="4">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="5">
+         <void property="statutCase">
+          <object idref="StatutCaseType1"/>
+         </void>
+        </void>
+        <void index="6">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="7">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="8">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="9">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+       </void>
+       <void id="ArrayList16" index="6">
+        <void index="0">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="1">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="2">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="3">
+         <void property="statutCase">
+          <object idref="StatutCaseType1"/>
+         </void>
+        </void>
+        <void index="4">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="5">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="6">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="7">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="8">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="9">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+       </void>
+       <void id="ArrayList17" index="7">
+        <void index="0">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="1">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="2">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="3">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="4">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="5">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="6">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="7">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="8">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="9">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+       </void>
+       <void id="ArrayList18" index="8">
+        <void index="0">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="1">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="2">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="3">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="4">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="5">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="6">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="7">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="8">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="9">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+       </void>
+       <void id="ArrayList19" index="9">
+        <void index="0">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="1">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="2">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="3">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="4">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="5">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="6">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="7">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="8">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+        <void index="9">
+         <void property="statutCase">
+          <object idref="StatutCaseType0"/>
+         </void>
+        </void>
+       </void>
+      </void>
+     </object>
+    </void>
+    <void property="grillePrincipale">
+     <object class="jeu.Grille"/>
+    </void>
+    <void property="navires">
+     <object class="java.util.HashMap">
+      <void method="put">
+       <object idref="NavireType0"/>
+       <object class="jeu.ContreTorpilleur"/>
+      </void>
+      <void method="put">
+       <object idref="NavireType4"/>
+       <object class="jeu.Torpilleur"/>
+      </void>
+      <void method="put">
+       <object idref="NavireType1"/>
+       <object class="jeu.PorteAvions"/>
+      </void>
+      <void method="put">
+       <object idref="NavireType2"/>
+       <object class="jeu.Croisseur"/>
+      </void>
+      <void method="put">
+       <object idref="NavireType3"/>
+       <object class="jeu.SousMarin"/>
+      </void>
+     </object>
+    </void>
+    <void property="nom">
+     <string>ricky</string>
+    </void>
+    <void property="totalPoints">
+     <int>17</int>
+    </void>
+   </object>
+  </void>
+  <void property="listFIFOAction">
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object class="jeu.Coordonnee" id="Coordonnee0">
+       <void property="col">
+        <int>9</int>
+       </void>
+       <void property="ligne">
+        <int>9</int>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="jeu.Action">
+     <void property="nomJoeur">
+      <string>ricky</string>
+     </void>
+     <void property="point">
+      <object idref="Coordonnee0"/>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="niveau">
+   <object class="java.lang.Enum" method="valueOf">
+    <class>jeu.NiveauPartieType</class>
+    <string>FACILE</string>
+   </object>
+  </void>
+ </object>
+</java>
