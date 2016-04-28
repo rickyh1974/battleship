@@ -60,7 +60,7 @@ public class VisualiserControlleur implements Initializable{
     }
     
     private void visualiser() {
-        LinkedList<Action> listFIFOAction = StaticPartie.getPartie().getListFIFOAction();
+        LinkedList<Action> listFIFOAction = PartieEnCours.getPartie().getListFIFOAction();
         LinkedList<Action> copie = new LinkedList<>();
         int size = listFIFOAction.size();
         
@@ -76,9 +76,6 @@ public class VisualiserControlleur implements Initializable{
                     else {
                         grilleDroiteControlleur.setAction(action);
                     }
-            
-                    System.out.println(action.getNomJoeur());
-                    System.out.println(action.getPoint().toString());
                 }
             
             })
@@ -89,7 +86,7 @@ public class VisualiserControlleur implements Initializable{
             btnReVisualiser.setVisible(true);
             btnReVisualiser.setDisable(false);
             lblEnCours.setVisible(false);
-            StaticPartie.getPartie().setListFIFOAction(copie);
+            PartieEnCours.getPartie().setListFIFOAction(copie);
         });
         
         timeline.play();
@@ -98,7 +95,6 @@ public class VisualiserControlleur implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }    
     
     public void initData() throws Exception {

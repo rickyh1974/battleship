@@ -13,15 +13,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import jeu.Coordonnee;
 import jeu.NavireType;
 import jeu.NiveauPartieType;
@@ -58,7 +55,7 @@ public class PartieControlleur implements Initializable{
     private void handleBtnCommencer(ActionEvent event) throws Exception {
         if(validerPlacementNavires())
         {
-            StaticPartie.getPartie().placerNaviresJoueurH(placementNavires);
+            PartieEnCours.getPartie().placerNaviresJoueurH(placementNavires);
             
             btnCommencer.setDisable(true);
             lblEnCours.setVisible(true);
@@ -75,7 +72,7 @@ public class PartieControlleur implements Initializable{
             final ChangeListener changeListener = (ChangeListener) (ObservableValue observableValue, Object oldValue, Object newValue) -> {
                 int ligne = ((Coordonnee)newValue).getLigne();
                 int col = ((Coordonnee)newValue).getCol();
-                StaticPartie.getPartie().executerTour(new Coordonnee(col,ligne));
+                PartieEnCours.getPartie().executerTour(new Coordonnee(col,ligne));
             };
             controller2.coordonneeProperty.addListener(changeListener);
         
@@ -85,18 +82,20 @@ public class PartieControlleur implements Initializable{
         
                     alert.setTitle("Partie terminée");
                     String message;
-                    if(StaticPartie.getPartie().getJoueurAI().getTotalPoints() > StaticPartie.getPartie().getJoueurH().getTotalPoints())
+                    if(PartieEnCours.getPartie().getJoueurAI().getTotalPoints() > PartieEnCours.getPartie().getJoueurH().getTotalPoints())
                         message = "Le joueur AI a gagné la partie !";
                     else
                         message = "Vous avez gagné la partie !";
                     alert.setContentText(message);
                     grilleDroite.setDisable(true);
+                    lblMessage.setText("Fin de la Partie ! Vous pouvez la visualiser avec le bouton Visualiser dans le menu de gauche");
+                    lblEnCours.setVisible(false);
                     Optional<ButtonType> result = alert.showAndWait();
                     
                 
             };
         
-            StaticPartie.getPartie().estFinPartieProperty().addListener(changeListener2);
+            PartieEnCours.getPartie().estFinPartieProperty().addListener(changeListener2);
         }
         else { //Placement Navires non valide
             lblErreurPlacement.setVisible(true);
@@ -154,15 +153,13 @@ public class PartieControlleur implements Initializable{
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        
     }    
     
     public void initData(String nom, String difficulte) throws Exception {
         this.nom = nom;
         this.difficulte = difficulte;
         
-        StaticPartie.setPartie(new Partie(nom,NiveauPartieType.valueOf(difficulte)));
+        PartieEnCours.setPartie(new Partie(nom,NiveauPartieType.valueOf(difficulte)));
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Grille.fxml"));
         grilleGauche.getChildren().add(loader.load());    
@@ -172,9 +169,9 @@ public class PartieControlleur implements Initializable{
     }
     
     public void initRecommencer() throws Exception {
-        this.nom = StaticPartie.getPartie().getJoueurH().getNom();
-        this.difficulte = StaticPartie.getPartie().getNiveau().name();        
-        StaticPartie.setPartie(new Partie(this.nom,NiveauPartieType.valueOf(this.difficulte)));
+        this.nom = PartieEnCours.getPartie().getJoueurH().getNom();
+        this.difficulte = PartieEnCours.getPartie().getNiveau().name();        
+        PartieEnCours.setPartie(new Partie(this.nom,NiveauPartieType.valueOf(this.difficulte)));
         
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Grille.fxml"));
@@ -187,13 +184,7 @@ public class PartieControlleur implements Initializable{
     public void initDataChargement(File fichier) throws Exception {
         
         Partie p = new Partie("",NiveauPartieType.FACILE);
-        StaticPartie.setPartie(p.chargement(fichier.getPath()));
-        //StaticPartie.setPartie(new Partie("abcd",NiveauPartieType.FACILE));
-        //StaticPartie.getPartie().chargement(fichiere.getPath(), fichier.getName());
-        
-        //StaticPartie.setPartie(new Partie(fichier));
-        //this.nom = StaticPartie.getPartie().getJoueurH().getNom();
-        //this.difficulte = StaticPartie.getPartie().getNiveau().name();
+        PartieEnCours.setPartie(p.chargement(fichier.getPath()));
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Grille.fxml"));
         grilleGauche.getChildren().add(loader.load());    
@@ -202,6 +193,6 @@ public class PartieControlleur implements Initializable{
         grilleGaucheControlleur.chargerNavires();
     }
     
-    
 
+    
 }

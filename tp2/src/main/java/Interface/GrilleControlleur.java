@@ -72,8 +72,8 @@ public class GrilleControlleur implements Initializable{
     private void handleMouseClick(MouseEvent mouseEvent) {
         Tuile source = (Tuile)mouseEvent.getSource();
         if(!source.estTouche) {
-            Integer row = grille.getRowIndex(source)-1;
-            Integer col = grille.getColumnIndex(source)-1;
+            Integer row = GridPane.getRowIndex(source)-1;
+            Integer col = GridPane.getColumnIndex(source)-1;
             coordonneeProperty.set(new Coordonnee(col,row));
             (source.getScene()).setCursor(Cursor.DEFAULT);
         }
@@ -106,7 +106,7 @@ public class GrilleControlleur implements Initializable{
     
     public void initialiserGrilleGauche() {
         
-        HashMap<Integer, ArrayList<Case>> cases = StaticPartie.getPartie().getJoueurH().getGrillePrincipale().getCases();
+        HashMap<Integer, ArrayList<Case>> cases = PartieEnCours.getPartie().getJoueurH().getGrillePrincipale().getCases();
         
         for(int ligne = 1; ligne < 11; ligne++) {
             for (int col = 1; col < 11; col++) {
@@ -125,7 +125,7 @@ public class GrilleControlleur implements Initializable{
                 });
                 
                 
-                final ChangeListener changeListener = (ChangeListener) (ObservableValue observableValue, Object oldValue, Object newValue) -> {
+                final ChangeListener changeListenerStatutCase = (ChangeListener) (ObservableValue observableValue, Object oldValue, Object newValue) -> {
                     if(tuile.estTouche == false) {
                         if(newValue.equals(StatutCaseType.DEMANDENONTOUCHE)) {
                             tuile.toucher();
@@ -138,7 +138,7 @@ public class GrilleControlleur implements Initializable{
                     }
                 };
                 
-                cases.get(ligne-1).get(col-1).statutCaseProperty().addListener(changeListener);
+                cases.get(ligne-1).get(col-1).statutCaseProperty().addListener(changeListenerStatutCase);
                 
                 GridPane.setConstraints(stackPane, col, ligne);
                 GridPane.setHalignment(stackPane, HPos.CENTER);
@@ -158,31 +158,31 @@ public class GrilleControlleur implements Initializable{
             ObservableList<Node> childrens = grille.getChildren();
             for(Node node : childrens) {
                 if(node.toString().contains("StackPane")) {
-                    if(grille.getRowIndex(node) == 1 && grille.getColumnIndex(node) <= 5) {
+                    if(GridPane.getRowIndex(node) == 1 && GridPane.getColumnIndex(node) <= 5) {
                         rectangle   = creerRectangle();
                         rectangle.setId(NavireType.PORTEAVIONS.toString());
                         rectangle.setFill(Color.DARKSLATEBLUE);
                         ((StackPane)node).getChildren().add(rectangle);
                     }
-                    if(grille.getRowIndex(node) == 2 && grille.getColumnIndex(node) <= 4) {
+                    if(GridPane.getRowIndex(node) == 2 && GridPane.getColumnIndex(node) <= 4) {
                         rectangle   = creerRectangle();
                         rectangle.setId(NavireType.CROISSEUR.toString());
                         rectangle.setFill(Color.DARKSLATEGRAY);
                         ((StackPane)node).getChildren().add(rectangle);
                     }
-                    if(grille.getRowIndex(node) == 3 && grille.getColumnIndex(node) <= 3) {
+                    if(GridPane.getRowIndex(node) == 3 && GridPane.getColumnIndex(node) <= 3) {
                         rectangle   = creerRectangle();
                         rectangle.setId(NavireType.CONTRETORPILLEUR.toString());
                         rectangle.setFill(Color.DARKOLIVEGREEN);
                         ((StackPane)node).getChildren().add(rectangle);
                     }
-                    if(grille.getRowIndex(node) == 4 && grille.getColumnIndex(node) <= 3) {
+                    if(GridPane.getRowIndex(node) == 4 && GridPane.getColumnIndex(node) <= 3) {
                         rectangle   = creerRectangle();
                         rectangle.setId(NavireType.SOUSMARIN.toString());
                         rectangle.setFill(Color.DARKGOLDENROD);
                         ((StackPane)node).getChildren().add(rectangle);
                     }
-                    if(grille.getRowIndex(node) == 5 && grille.getColumnIndex(node) <= 2) {
+                    if(GridPane.getRowIndex(node) == 5 && GridPane.getColumnIndex(node) <= 2) {
                         rectangle   = creerRectangle();
                         rectangle.setId(NavireType.TORPILLEUR.toString());
                         rectangle.setFill(Color.DARKORCHID);
@@ -219,8 +219,8 @@ public class GrilleControlleur implements Initializable{
                     if(rectNavire.getId().equals("tuile"))
                         rectNavire = (Rectangle)stackPaneChildrens.get(0);
                     
-                    Integer row = grille.getRowIndex(node)-1;
-                    Integer col = grille.getColumnIndex(node)-1;
+                    Integer row = GridPane.getRowIndex(node)-1;
+                    Integer col = GridPane.getColumnIndex(node)-1;
                     
                     if(!placementNavires.containsKey(NavireType.valueOf(rectNavire.getId())))
                         placementNavires.put(NavireType.valueOf(rectNavire.getId()), new ArrayList<>());
@@ -238,7 +238,7 @@ public class GrilleControlleur implements Initializable{
         
         Rectangle rectangle; 
         
-        HashMap<NavireType, ArrayList<Coordonnee>> place = StaticPartie.getPartie().getJoueurH().getPlacementNaviresInitial();
+        HashMap<NavireType, ArrayList<Coordonnee>> placements = PartieEnCours.getPartie().getJoueurH().getPlacementNaviresInitial();
             
         ObservableList<Node> childrens = grille.getChildren();
         
@@ -247,31 +247,31 @@ public class GrilleControlleur implements Initializable{
             
             if(node.toString().contains("StackPane")) {
                 
-                if(place.get(NavireType.PORTEAVIONS).contains(new Coordonnee(grille.getColumnIndex(node)-1,grille.getRowIndex(node)-1))) {
+                if(placements.get(NavireType.PORTEAVIONS).contains(new Coordonnee(GridPane.getColumnIndex(node)-1,GridPane.getRowIndex(node)-1))) {
                     rectangle   = creerRectangle();
                     rectangle.setId(NavireType.PORTEAVIONS.toString());
                     rectangle.setFill(Color.DARKSLATEBLUE);
                     ((StackPane)node).getChildren().add(rectangle);
                 }
-                if(place.get(NavireType.CROISSEUR).contains(new Coordonnee(grille.getColumnIndex(node)-1,grille.getRowIndex(node)-1))) {
+                if(placements.get(NavireType.CROISSEUR).contains(new Coordonnee(GridPane.getColumnIndex(node)-1,GridPane.getRowIndex(node)-1))) {
                     rectangle   = creerRectangle();
                     rectangle.setId(NavireType.CROISSEUR.toString());
                     rectangle.setFill(Color.DARKSLATEGRAY);
                     ((StackPane)node).getChildren().add(rectangle);
                 }
-                if(place.get(NavireType.CONTRETORPILLEUR).contains(new Coordonnee(grille.getColumnIndex(node)-1,grille.getRowIndex(node)-1))) {
+                if(placements.get(NavireType.CONTRETORPILLEUR).contains(new Coordonnee(GridPane.getColumnIndex(node)-1,GridPane.getRowIndex(node)-1))) {
                     rectangle   = creerRectangle();
                     rectangle.setId(NavireType.CONTRETORPILLEUR.toString());
                     rectangle.setFill(Color.DARKOLIVEGREEN);
                     ((StackPane)node).getChildren().add(rectangle);
                 }
-                if(place.get(NavireType.SOUSMARIN).contains(new Coordonnee(grille.getColumnIndex(node)-1,grille.getRowIndex(node)-1))) {
+                if(placements.get(NavireType.SOUSMARIN).contains(new Coordonnee(GridPane.getColumnIndex(node)-1,GridPane.getRowIndex(node)-1))) {
                     rectangle   = creerRectangle();
                     rectangle.setId(NavireType.SOUSMARIN.toString());
                     rectangle.setFill(Color.DARKGOLDENROD);
                     ((StackPane)node).getChildren().add(rectangle);
                 }
-                if(place.get(NavireType.TORPILLEUR).contains(new Coordonnee(grille.getColumnIndex(node)-1,grille.getRowIndex(node)-1))) {
+                if(placements.get(NavireType.TORPILLEUR).contains(new Coordonnee(GridPane.getColumnIndex(node)-1,GridPane.getRowIndex(node)-1))) {
                     rectangle   = creerRectangle();
                     rectangle.setId(NavireType.TORPILLEUR.toString());
                     rectangle.setFill(Color.DARKORCHID);
@@ -290,7 +290,7 @@ public class GrilleControlleur implements Initializable{
         for(Node node : childrens) {
             if(node.toString().contains("StackPane") || node.toString().contains("tuile")) {
                 
-                if(grille.getRowIndex(node)-1 == coord.getLigne() && grille.getColumnIndex(node)-1 == coord.getCol()) {
+                if(GridPane.getRowIndex(node)-1 == coord.getLigne() && GridPane.getColumnIndex(node)-1 == coord.getCol()) {
                     
                     Tuile tuile;
                     if(!node.toString().contains("tuile")) {
@@ -320,7 +320,7 @@ public class GrilleControlleur implements Initializable{
     
     public void initialiserGrilleDroite() {
         
-        HashMap<Integer, ArrayList<Case>> cases = StaticPartie.getPartie().getJoueurH().getGrilleAdverse().getCases();
+        HashMap<Integer, ArrayList<Case>> cases = PartieEnCours.getPartie().getJoueurH().getGrilleAdverse().getCases();
         
         for(int ligne = 1; ligne < 11; ligne++) {
             for (int col = 1; col < 11; col++) {

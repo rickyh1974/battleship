@@ -17,10 +17,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-/**
- *
- * @author Alexandre
- */
 public class MainAppController implements Initializable {
     
     @FXML
@@ -37,7 +33,7 @@ public class MainAppController implements Initializable {
     @FXML
     private void handleBtnRecommencerPartie(ActionEvent event) throws Exception {
         
-        if(StaticPartie.getPartie() != null)
+        if(PartieEnCours.getPartie() != null)
         {
             ecranCentre.getChildren().clear();
         
@@ -69,7 +65,7 @@ public class MainAppController implements Initializable {
     
     @FXML
     private void handleBtnSauvegarder(ActionEvent event) throws Exception {
-        if(StaticPartie.getPartie() != null) {
+        if(PartieEnCours.getPartie() != null) {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Sauvegarder Partie");
             FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
@@ -80,7 +76,7 @@ public class MainAppController implements Initializable {
             
                 try
                 {
-                    StaticPartie.getPartie().sauvegardePartie(fichier.getPath());
+                    PartieEnCours.getPartie().sauvegardePartie(fichier.getPath());
                     Alert alert = new Alert(AlertType.INFORMATION);
         
                     alert.setTitle("Fichier Sauvegardé");
@@ -118,7 +114,7 @@ public class MainAppController implements Initializable {
     
     @FXML
     private void handleBtnVisualiser(ActionEvent event) throws Exception {
-        if(StaticPartie.getPartie() != null) { //TODO && StaticPartie.getPartie().getEstFinPartie()
+        if(PartieEnCours.getPartie() != null && PartieEnCours.getPartie().getEstFinPartie()) {
             ecranCentre.getChildren().clear();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Visualiser.fxml"));
             ecranCentre.getChildren().add(loader.load());
@@ -158,23 +154,12 @@ public class MainAppController implements Initializable {
         ecranCentre.getChildren().add(loader.load());
         NouvellePartieControlleur nouvellePartieControlleur = loader.<NouvellePartieControlleur>getController();
     }
-    public void change() {
-        System.out.println("CHANGELISTENER");
-    }
-    
-    public void btna() {
-         btnRecommencerPartie.setText("ABCD");
-         btnRecommencerPartie.setDisable(false);
-         ecranCentre.getChildren().clear();
-    }
 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         try
         {
-            //StaticPartie s = new StaticPartie();
             nouvellePartie();
         } catch(Exception e) {
             System.out.println("MainAppController initialize " + e.getMessage());
